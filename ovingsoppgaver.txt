@@ -1,0 +1,314 @@
+📘 Øvings-eksamen i INFT1007: Datakommunikasjon
+________________________________________
+
+🧩 Oppgave 1 – OSI og TCP/IP
+a) Nevn lagene i den forenklede OSI-modellen og beskriv kort hovedoppgaven til hvert lag.
+Svar:
+1.	Applikasjonslaget – Brukergrensesnitt og tjenester som HTTP, DNS, e-post.
+2.	Transportlaget – Sikrer pålitelig overføring og segmentering (f.eks. TCP/UDP).
+3.	Nettverkslaget – Ruter pakker mellom nettverk med IP-adresser.
+4.	Lenkelaget – Sender data mellom noder lokalt (f.eks. Ethernet, MAC).
+5.	Fysiske laget – Overfører bitstrøm som elektriske signaler eller radiobølger.
+b) Du besøker nettsiden www.elg.no i nettleseren din. Forklar hva som skjer på hvert lag i OSI-modellen.
+Svar:
+Applikasjonslaget: Nettleseren sender HTTP-forespørsel.
+Transportlaget: TCP oppretter forbindelse (3-veis handshake) og deler opp data.
+Nettverkslaget: IP-adresser brukes for å sende pakken mot serveren.
+Lenkelaget: Dataen pakkes i rammer med MAC-adresser.
+Fysiske laget: Rammer konverteres til signaler over kabel eller WiFi.
+________________________________________
+🧠 Oppgave 2 – Transportlaget: TCP vs UDP
+a) Nevn tre viktige forskjeller mellom TCP og UDP.
+Svar:
+TCP er forbindelsesbasert, pålitelig og leverer data i riktig rekkefølge.
+UDP er forbindelsesløs, raskere og upålitelig – det er ingen garanti for levering.
+TCP bruker bekreftelser (ACK), mens UDP ikke gjør det.
+b) Gi ett eksempel på en tjeneste som bruker TCP, og én som bruker UDP – og forklar hvorfor protokollen passer til formålet.
+Svar:
+TCP brukes i nettsurfing (HTTP) fordi det sikrer korrekt levering.
+UDP brukes i strømming (f.eks. video eller DNS) fordi hastighet er viktigere enn 100 % pålitelighet.
+c) Forklar hva en «3-veis handshake» er i TCP.
+Svar:
+1.	Klient sender SYN.
+2.	Server svarer SYN-ACK.
+3.	Klient svarer ACK. Forbindelsen er nå opprettet.
+________________________________________
+🛠 Oppgave 3 – Glidende vindu og flytkontroll
+a) Hva er formålet med glidende vindu-teknikken i TCP?
+Svar:
+Formålet er å sende flere pakker uten å vente på bekreftelse for hver enkelt – dette øker overføringshastigheten.
+b) Hvordan fungerer flytkontroll i TCP, og hvilket felt i TCP-headeren styrer dette?
+Svar:
+Flytkontroll sørger for at senderen ikke overbelaster mottakeren. Det styres av "Window Size"-feltet i TCP-headeren.
+________________________________________
+🔐 Oppgave 4 – Brannmur og sikkerhet
+a) Forklar forskjellen på et pakkefilter og et innholdsfilter.
+Svar:
+Et pakkefilter blokkerer trafikk basert på IP-adresse og portnummer.
+Et innholdsfilter undersøker selve datainnholdet og blokkerer f.eks. virus, reklame eller bestemte nettsider.
+b) Hvilken brannmurtype (eller kombinasjon) ville du brukt for å:
+• Stoppe ansatte fra å bruke TikTok
+• Forhindre nedlasting av virus via e-post
+• Beskytte en intern SSH-server fra eksterne angripere
+Svar:
+– TikTok: Kombinasjon av innholdsfilter (for domeneblokkering) og pakkefilter (for å blokkere bestemte IP-er og porter).
+– Virus via e-post: Innholdsfilter som sjekker vedlegg og lenker.
+– SSH-server: Pakkefilter som kun tillater tilgang fra bestemte IP-adresser til port 22.
+________________________________________
+🛰 Oppgave 5 – Ruting og autonome systemer
+a) Hva er forskjellen på en intern og ekstern ruteprotokoll?
+Svar:
+Intern brukes innen ett nettverk (f.eks. OSPF, RIP), ekstern brukes mellom nettverk (f.eks. BGP).
+b) Hva er et autonomt system (AS), og hvilken protokoll brukes mellom AS?
+Svar:
+Et AS er en gruppe IP-nettverk kontrollert av én administrasjon.
+Mellom AS brukes BGP (Border Gateway Protocol).
+________________________________________
+🧮 Oppgave 6 – IP-subnetting
+Du får adressen 192.168.10.0/24.
+a) Del dette nettet i fire like store subnett. Skriv opp:
+• Nettadresse
+• Første og siste brukbare IP
+• Broadcastadresse
+Svar:
+1.	192.168.10.0/26 → Brukbare: 192.168.10.1–62, Broadcast: 192.168.10.63
+2.	192.168.10.64/26 → Brukbare: 192.168.10.65–126, Broadcast: 192.168.10.127
+3.	192.168.10.128/26 → Brukbare: 192.168.10.129–190, Broadcast: 192.168.10.191
+4.	192.168.10.192/26 → Brukbare: 192.168.10.193–254, Broadcast: 192.168.10.255
+b) Hvor mange IP-adresser er tilgjengelig per subnett?
+Svar: 64 adresser per subnett – 62 brukbare (1 nettadresse + 1 broadcastadresse).
+________________________________________
+🔌 Oppgave 7 – Lenkelaget og MAC
+a) Forklar forskjellen mellom MAC-adresse og IP-adresse.
+Svar:
+MAC-adressen er en fysisk, fast adresse brukt lokalt i nettverket.
+IP-adressen er en logisk adresse brukt for ruting mellom nettverk.
+b) Hva er forskjellen på en svitsj og en hub, og hvordan påvirker det antall kollisjonsdomener?
+Svar:
+En svitsj sender data kun til riktig port, og hver port er et kollisjonsdomene.
+En hub sender til alle porter, hele huben er ett kollisjonsdomene.
+c) Hvorfor trenger vi et type-felt i Ethernet-rammer?
+Svar:
+Type-feltet forteller hvilket protokollnivå nyttelasten tilhører (f.eks. IP, ARP), slik at mottakeren vet hvordan dataen skal behandles.
+________________________________________
+📡 Oppgave 8 – Trådløse nettverk
+a) Hva er forskjellen på BSS og ESS i WiFi?
+Svar:
+BSS (Basic Service Set) er ett aksesspunkt og klienter. ESS (Extended Service Set) er flere aksesspunkter koblet sammen for å gi større dekning.
+b) Hvordan fungerer CSMA/CA i trådløse nettverk, og hvorfor brukes det i stedet for CSMA/CD?
+Svar:
+CSMA/CA forsøker å unngå kollisjoner ved å reservere sendetid (RTS/CTS).
+CSMA/CD fungerer ikke i trådløse nett, fordi enheter ikke kan lytte mens de sender.
+________________________________________
+🧪 Oppgave 9 – DNS og nslookup
+a) Finn IP-adressene til www.datakom.no.
+Svar:
+Bruk nslookup www.datakom.no. Svaret vil vise en eller flere IP-adresser.
+b) Hvilke maskiner mottar e-post for ntnu.no (bruk MX-oppslag)?
+Svar:
+Bruk nslookup -type=MX ntnu.no. Svaret viser navnene på e-postserverne (f.eks. mx.ntnu.no).
+________________________________________
+🌐 Oppgave 10 – HTTP og proxy
+a) Forklar hva en proxy-server gjør og hvilke fordeler den gir.
+Svar:
+Proxy henter data på vegne av klienten. Fordeler: anonymitet, innholdsfiltrering, caching og logging.
+b) Hva er forskjellen på en vanlig cookie og en tredjeparts-cookie?
+Svar:
+Vanlig cookie kommer fra nettstedet du besøker. Tredjeparts-cookie settes av en annen aktør (f.eks. reklamefirma) via nettstedet.
+c) Hva gjør HTTP-headeren If-Modified-Since?
+Svar:
+Den ber serveren om kun å sende data hvis det er endret siden en gitt dato – sparer båndbredde.
+________________________________________
+🔣 Oppgave 11 – Fysisk lag og medium
+a) Nevn tre forskjellige overføringsmedier og beskriv fordeler/ulemper med hvert.
+Svar:
+– Kobber: billig og fleksibel, men kort rekkevidde og følsom for støy.
+– Fiber: rask, lang rekkevidde, dyr og vanskeligere å legge.
+– Trådløst: fleksibelt, men tregere og mer utsatt for forstyrrelser.
+b) Forklar hva som menes med signaleringshastighet og overføringshastighet.
+Svar:
+Signaleringshastighet = antall symbolske endringer per sekund (baud).
+Overføringshastighet = hvor mange bits som faktisk overføres per sekund (bps).
+________________________________________
+🧩 Oppgave 12 – VPN og NAT
+a) Forklar forskjellen på klient-VPN og nettverk-til-nettverk-VPN.
+Svar:
+Klient-VPN lar én bruker koble seg sikkert til et nettverk.
+Nettverk-til-nettverk-VPN kobler to nettverk sammen via en kryptert tunnel.
+b) Hvordan bidrar NAT til å spare på bruken av offentlige IP-adresser?
+Svar:
+NAT gjør at mange enheter med private IP-adresser kan dele én offentlig IP ved å oversette adresser og porter. Dette reduserer behovet for mange offentlige IP-er.
+
+
+🧩 Tema: OSI-modellen og grunnprinsipper
+Spørsmål:
+Hva er en PDU, og hvordan endres den gjennom OSI-lagene?
+Svar:
+En PDU (Protocol Data Unit) er betegnelsen på datainnholdet på hvert lag i OSI-modellen.
+– På applikasjonslaget er det data.
+– På transportlaget blir det segment (TCP) eller datagram (UDP).
+– På nettverkslaget er det en IP-pakke.
+– På lenkelaget er det en ramme.
+– På det fysiske laget er det bitstrøm.
+PDU-en endrer form og får ekstra innpakning (header/trailer) etter hvert som den går nedover lagene.
+________________________________________
+🧠 Tema: Transportlaget
+Spørsmål:
+Hvordan fungerer segmentering i TCP, og hvorfor er dette nødvendig?
+Svar:
+Segmentering betyr at store datamengder deles opp i mindre biter kalt segmenter før sending.
+TCP gjør dette for å sikre pålitelig overføring, slik at mottakeren kan bekrefte mindre enheter og be om retransmisjon av kun det som mangler.
+Segmentering er også nødvendig fordi nettverk har begrensninger på hvor store pakker de kan håndtere (MTU).
+________________________________________
+🛰 Tema: Ruting og IP
+Spørsmål:
+Forklar forskjellen på direktetilkoblet rute og rute via neste hopp.
+Svar:
+En direktetilkoblet rute er et nettverk ruteren er fysisk koblet til – den kan sende direkte til mottaker via lenkelaget.
+En rute via neste hopp betyr at ruteren må sende pakken videre til en annen ruter (neste hopp) for å nå destinasjonsnettverket.
+Ruteren bruker rutetabellen for å finne ut om en IP-adresse tilhører et direktet nett eller krever videre ruting.
+________________________________________
+🔌 Tema: Lenkelaget og MAC
+Spørsmål:
+Forklar ARP-prosessen steg for steg.
+Svar:
+1.	En enhet vet IP-adressen til mottakeren, men mangler MAC-adressen.
+2.	Den sender en ARP-forespørsel (broadcast): "Hvem har IP 192.168.1.5?"
+3.	Enheten med den IP-adressen svarer med sin MAC-adresse.
+4.	Avsenderen lagrer svaret i ARP-tabellen og sender rammen.
+ARP er nødvendig for å kunne sende IP-pakker over Ethernet.
+________________________________________
+📡 Tema: Trådløse nett og aksess
+Spørsmål:
+Hvordan fungerer RTS/CTS i trådløse nett, og når brukes det?
+Svar:
+RTS (Request To Send) og CTS (Clear To Send) brukes for å reservere tilgang til det trådløse mediet.
+Senderen spør først (RTS), og hvis mottakeren er klar, sender den CTS tilbake.
+Andre enheter som hører CTS vet at de må vente.
+Dette forhindrer kollisjoner, spesielt ved "hidden node"-problemer, der to klienter ikke hører hverandre.
+
+
+📌 Tema: IP og Subnetting
+Spørsmål:
+Forklar hvordan man deler et /24-nettverk inn i 8 like store subnett. Hva blir subnetmasken, og hvor mange brukbare IP-adresser får hvert subnett?
+Svar:
+Et /24-nett består av 256 adresser. Ved å dele det i 8 subnett får man /27-nett (subnetmaske 255.255.255.224). Hvert subnett har 32 adresser, hvorav 30 er brukbare (1 nettadresse + 1 broadcast).
+________________________________________
+🌐 Tema: DNS
+Spørsmål:
+Hva skjer når du skriver inn et domenenavn i nettleseren? Beskriv DNS-oppslaget steg for steg.
+Svar:
+1.	Nettleseren spør operativsystemet om IP-en finnes i cache.
+2.	Hvis ikke, spør OS en lokal DNS-resolver.
+3.	Resolver spør først rot-server, så TLD-server, deretter autoritativ DNS-server for domenet.
+4.	IP-adressen returneres og brukes til å kontakte tjeneren.
+________________________________________
+🔐 Tema: Brannmur og sikkerhet
+Spørsmål:
+Hva er en statisk og en dynamisk brannmur, og når brukes de?
+Svar:
+En statisk brannmur har faste regler som ikke endres automatisk – brukes i stabile miljøer.
+En dynamisk brannmur oppdaterer reglene basert på trafikktilstand og forbindelser (f.eks. stateful packet inspection), og brukes i systemer som krever fleksibilitet og beskyttelse mot komplekse trusler.
+________________________________________
+🔄 Tema: NAT og PAT
+Spørsmål:
+Hva er forskjellen mellom NAT og PAT, og hvorfor brukes de?
+Svar:
+NAT oversetter én eller flere private IP-adresser til én offentlig IP.
+PAT (Port Address Translation) utvider NAT ved å bruke ulike portnumre slik at flere enheter kan dele én offentlig IP. De brukes for å spare på antall offentlige IP-adresser.
+________________________________________
+🧩 Tema: VLAN og svitsj
+Spørsmål:
+Hvordan fungerer VLAN i en svitsj, og hva er fordelene?
+Svar:
+Et VLAN lar svitsjen dele nettverket i logiske grupper, uavhengig av fysisk plassering.
+Trafikk innen ett VLAN holdes isolert fra andre, og det reduserer broadcast-trafikk, gir økt sikkerhet og enklere administrasjon. For å kommunisere mellom VLAN kreves ruting.
+
+
+
+📘 Øvingsoppgavenivå – Eksamenssett INFT1007
+________________________________________
+1. OSI og protokoller
+Spørsmål:
+Forklar hvordan data pakkes og sendes fra applikasjonslaget ned til det fysiske laget når en bruker åpner en nettside.
+Svar:
+Data starter som HTTP på applikasjonslaget. Deretter pakkes det inn i TCP-segmenter (transportlaget), så i IP-pakker (nettverkslaget), deretter i Ethernet-rammer (lenkelaget), og til slutt overføres det som bitstrøm via det fysiske laget. Hvert lag legger til sin egen header (og evt. trailer) for adressering og kontroll.
+________________________________________
+2. Transportlaget
+Spørsmål:
+Forklar hvordan TCP bruker glidende vindu og SACK for å sikre effektiv og pålitelig dataoverføring.
+Svar:
+TCPs glidende vindu lar flere pakker sendes før bekreftelse mottas, noe som øker effektiviteten. SACK (Selective Acknowledgement) gjør det mulig å bekrefte bare de manglende pakkene, slik at bare de sendes på nytt i stedet for hele vinduet.
+________________________________________
+3. Subnetting
+Spørsmål:
+Del opp IP-nettet 192.168.5.0/24 i 6 subnett med så like mange IP-er som mulig. Oppgi alle nettadressene og nettmaskene.
+Svar:
+Vi trenger minst 6 subnett → nærmeste 2³ = 8 → gir /27-subnett.
+Nettadressene blir:
+•	192.168.5.0/27
+•	192.168.5.32/27
+•	192.168.5.64/27
+•	192.168.5.96/27
+•	192.168.5.128/27
+•	192.168.5.160/27
+________________________________________
+4. Ruting
+Spørsmål:
+Forklar hvordan en ruter avgjør om en IP-pakke skal sendes direkte til mottaker eller videresendes til neste ruter.
+Svar:
+Ruteren ser i rutetabellen. Hvis IP-adressen tilhører et direktetilkoblet nettverk, sender den pakken direkte ved hjelp av ARP og MAC. Hvis ikke, sendes den videre til neste hopp som er spesifisert i tabellen.
+________________________________________
+5. Lenkelaget og MAC
+Spørsmål:
+Hva skjer hvis to enheter på et lokalnett har samme MAC-adresse? Hvordan kan dette oppdages og håndteres?
+Svar:
+MAC-konflikt kan føre til forstyrrelser, tap av pakker og feilruting. Det kan oppdages ved å se feil eller varsler i ARP-tabellen. Løsningen er å deaktivere eller bytte MAC på en av enhetene.
+________________________________________
+6. Trådløst nett
+Spørsmål:
+Beskriv hvordan CSMA/CA og RTS/CTS fungerer sammen i trådløse nettverk for å hindre kollisjoner.
+Svar:
+CSMA/CA lytter etter ledig kanal før sending. RTS/CTS brukes for å reservere kanalen: sender sender RTS, mottaker svarer CTS, og andre klienter venter. Dette hindrer "hidden node"-problemer.
+________________________________________
+7. DNS
+Spørsmål:
+Beskriv forskjellen på autoritativt og ikke-autoritativt DNS-svar. Når brukes caching?
+Svar:
+Et autoritativt svar kommer direkte fra domenets DNS-server og er garantert korrekt. Et ikke-autoritativt svar kommer fra mellomlagring (cache). Caching brukes for å redusere svartid og belastning, og styres av TTL-feltet.
+________________________________________
+8. Brannmur
+Spørsmål:
+Lag et enkelt regelsett for en pakkefilter-brannmur som tillater kun web-trafikk ut, men blokkerer alt annet.
+Svar:
+•	ALLOW TCP fra LAN til port 80 og 443
+•	DENY ALL OUTBOUND (annet enn web)
+•	ALLOW ESTABLISHED/RELATED INBOUND
+•	DENY ALL INBOUND
+________________________________________
+9. VLAN og svitsj
+Spørsmål:
+Hvordan kan VLAN og trunk-porter brukes for å dele et fysisk nett i fire logiske nettverk over to svitsjer?
+Svar:
+Hver port i svitsjene konfigureres for hvert VLAN (f.eks. VLAN 10, 20, 30, 40). En trunk-port mellom svitsjene bærer trafikk for alle VLAN ved å bruke tagger (802.1Q). VLAN gir logisk separasjon uten ekstra kabling.
+________________________________________
+10. Proxy og sikkerhet
+Spørsmål:
+Forklar hvordan en proxy kan brukes for både ytelse og sikkerhet i et skolenettverk.
+Svar:
+Proxy cacher nettsider, som reduserer lastetid og sparer båndbredde. Den kan også blokkere uønsket innhold, filtrere nettsider, logge aktivitet og skjule interne IP-adresser.
+________________________________________
+11. DHCP
+Spørsmål:
+Hva skjer hvis to DHCP-servere er aktive i samme nettverk? Hvordan påvirker det klientene?
+Svar:
+Klienter kan få forskjellige IP-konfigurasjoner fra hver server, noe som kan føre til nettverksfeil eller ingen internett. Dette løses ved å bruke én autoritativ DHCP-server eller koordinere dem med reservert adresseområde.
+________________________________________
+12. Fysisk lag
+Spørsmål:
+Beskriv hvordan ulike medier (kobber, fiber, trådløst) påvirker båndbredde og signalstyrke. Nevn fordeler og ulemper.
+Svar:
+Kobber: billig, enkelt å legge, men kort rekkevidde og støyutsatt.
+Fiber: høy hastighet og lang rekkevidde, men dyr og vanskeligere å installere.
+Trådløst: fleksibelt og mobilt, men følsomt for interferens og har lavere stabilitet.
+
