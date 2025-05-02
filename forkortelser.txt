@@ -247,10 +247,11 @@ Sender rammen til serverens nettverkskort
 
 🎯 Hovedpoeng:
 
-Lag	Hva skjer?
-Nettverkslaget	IP-adressene forblir uendret fra avsender til mottaker
-Lenkelaget	MAC-adressene endres for hvert hopp (hver ruter eller node)
-ARP	Brukes lokalt for å finne MAC til neste hopp
+Hva skjer?
+Nettverkslaget - 	IP-adressene forblir uendret fra avsender til mottaker
+Lenkelaget	- MAC-adressene endres for hvert hopp (hver ruter eller node)
+ARP	- Brukes lokalt for å finne MAC til neste hopp
+
 🧩 Virkelighetseksempel:
 Tenk på det som å sende et brev via post:
 
