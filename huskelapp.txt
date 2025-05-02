@@ -1,0 +1,107 @@
+ Wireshark
+*  Applikasjonslaget (brukes som analyseverktøy, men ser hele OSI-stacken)
+*  Et verktøy for å analysere nettverkstrafikk. Det fanger opp pakker og viser detaljer om protokoller, adresser, porter og nyttelast. Brukes for feilsøking, læring og sikkerhetstesting.
+
+ Glidende vindu
+*  Transportlaget
+*  En teknikk i TCP som gjør det mulig å sende flere pakker før man må vente på bekreftelse (ACK). Dette gir høyere hastighet og bedre utnyttelse av linja enn én-og-én sending som i stopp-og-vent.
+
+ Stopp og vent
+*  Transportlaget
+*  En enkel pålitelig overføringsmetode der sender venter på bekreftelse før neste pakke sendes. Trygt, men tregt - derfor erstattet av glidende vindu i TCP.
+
+ Paritetssjekk / CRC / FCS
+*  Lenkelaget
+*  Feildeteksjonsmetoder. CRC (cyclic redundancy check) brukes til å sjekke at rammen ikke er korrupt. FCS er feltet i Ethernet-rammen som bærer CRC-verdien.
+
+ Pakkesvitsjing vs linjesvitsjing
+*  Nettverkslaget
+*  I pakkesvitsjing sendes pakker hver for seg og kan ta ulike ruter. I linjesvitsjing (f.eks. telefonsystem) reserveres en fast linje før data sendes. Pakkesvitsjing er mer effektiv og fleksibel, men krever mer logikk.
+
+ Portnummer
+*  Transportlaget
+*  Identifiserer hvilken applikasjon som skal motta data på en bestemt maskin. F.eks. port 80 = HTTP, port 25 = SMTP. Brukes sammen med IP-adresse for å lage en socket.
+
+ nslookup
+*  Applikasjonslaget
+*  Et verktøy for å slå opp IP-adresser knyttet til domenenavn via DNS. Brukes også til å se MX-poster (e-posttjener), A-poster (IPv4) og AAAA (IPv6).
+
+ URL
+*  Applikasjonslaget
+*  Uniform Resource Locator - adressen til en nettressurs, f.eks. http://www.ntnu.no:80/index.html. Består av protokoll, domenenavn, port og filsti.
+
+ Access Point
+*  Lenkelaget / Fysisk lag
+*  Et aksesspunkt for trådløse klienter. Kobles til svitsj og fungerer som en bro mellom trådløs og kablet del av lokalnettet. Hver WiFi-kanal utgjør et kollisjonsdomene.
+
+ Switching og Forwarding-tabell
+*  Lenkelaget
+*  Svitsjer bygger opp en MAC-adressetabell (forwarding-tabell) ved å lære hvilke MAC-adresser som finnes på hvilke porter. Dette gjør at de kan videresende rammer kun til riktig mottaker.
+
+ MX og AAAA i DNS
+*  Applikasjonslaget
+*  DNS-oppføringene MX brukes for å angi hvilken e-postserver som håndterer e-post for et domene. AAAA returnerer IPv6-adressen til et domenenavn.
+
+ Rutetabell (Routing Table)
+*  Nettverkslaget
+*  Oversikt over hvilke IP-nettverk ruteren kjenner, og hvilken port eller neste hopp pakken skal til. Brukes til å ta beslutninger om videresending av pakker.
+
+ Adresseringstyper:
+* MAC-adresse (Lenkelaget): Lokal fysisk identifikator, unik per enhet.
+* IP-adresse (Nettverkslaget): Global logisk adresse, endres per nettverk.
+* Portnummer (Transportlaget): Identifiserer hvilken app som skal ha data.
+* URL (Applikasjonslaget): Menneskelesbar nettadresse som oversettes via DNS.
+
+? Brannmur og Innholdsfiltrering
+*  Lag 3-7
+*  Brannmur filtrerer trafikk på IP-, port- eller applikasjonsnivå. Innholdsfiltre (f.eks. adblock) vurderer hva slags data som sendes, og kan blokkere f.eks. uønsket HTML eller JavaScript.
+
+ DHCP
+*  Applikasjonslaget
+*  Tildeler automatisk IP-adresse, gateway og DNS til klienter i et nettverk. Bruker UDP og port 67/68.
+
+ Ruter
+*  Nettverkslaget (Layer 3)
+*  Ruter videresender IP-pakker mellom ulike nettverk. Den bruker en rutetabell til å finne beste vei til mottakerens IP-adresse. Rutere er grensen mellom kringkastingsdomener og holder styr på trafikken mellom subnett og mot Internett.
+
+ Svitsj (switch)
+*  Lenkelaget (Layer 2)
+*  Svitsjen kobler sammen enheter i samme lokalnett og videresender Ethernet-rammer basert på MAC-adresser. Den lager en MAC-tabell og sender bare data til riktig port. Svitsjer deler opp kollisjonsdomener (én per port), men ikke kringkastingsdomener.
+
+ Hub
+*  Fysiske laget (Layer 1)
+*  En hub er en enkel signalforsterker som sender alt den mottar ut til alle porter. Den har ingen intelligens - ingen adresser, ingen ruting, ingen filtrering. Hele nettverket koblet til en hub er ett stort kollisjonsdomene.
+
+ Node
+*  Alle lag (generelt konsept)
+*  En node er en hvilken som helst enhet i nettverket som sender, mottar eller videresender data - f.eks. PC, mobil, skriver, svitsj eller ruter. I serie-, ring- og busstopologi brukes begrepet "node" som synonym for deltaker.
+
+ MAC-adresse
+*  Lenkelaget (Layer 2)
+*  En fysisk adresse hardkodet i nettverkskortet, brukt for lokal kommunikasjon innen et nettverk. MAC-adresser brukes i Ethernet-rammer for å vite hvem som skal motta dataen innenfor samme LAN. ARP brukes til å finne MAC-en til en gitt IP.
+
+ IP-adresse
+*  Nettverkslaget (Layer 3)
+*  En logisk adresse som identifiserer en enhet på tvers av nettverk. Brukes til ruting og kommunikasjon mellom nettverk (f.eks. over Internett). Kombinasjonen IP + portnummer brukes til å snakke med spesifikke applikasjoner (TCP/UDP).
+
+ Brannmur (firewall)
+*  Nettverkslaget og oppover (L3-L7)
+*  En sikkerhetsmekanisme som filtrerer trafikk basert på IP-adresser, porter eller applikasjonsdata. Den kan blokkere uønsket trafikk, tillate spesifikke tjenester og beskytte mot angrep. Brannmurer finnes som både programvare og maskinvare.
+
+ Proxy
+*  Applikasjonslaget (Layer 7)
+*  En mellomtjener mellom klient og tjener, som henter innhold på vegne av brukeren. Brukes til caching, anonymisering, logging og filtrering. En proxy kan også beskytte interne ressurser ved å stå som "buffer" ut mot internett.
+
+ Rutetabell (IP-tabell)
+*  Nettverkslaget (Layer 3)
+*  En oversikt over hvilke nettverk ruteren kjenner til, og hvor den skal sende pakker for å nå dem. Tabellen oppdateres enten manuelt (statisk ruting) eller automatisk via ruteprotokoller (dynamisk ruting). IP-adresser og nettmasker avgjør veivalg.
+
+ Access point (WiFi-tilgangspunkt)
+*  Lenkelaget / Fysisk lag
+*  En bro mellom trådløse klienter og det kablede Ethernet-nettverket. Den bruker trådløs protokoll (802.11) på den ene siden og Ethernet (802.3) på den andre, og lar WiFi-enheter kommunisere med resten av nettverket.
+
+ Portnummer
+*  Transportlaget (Layer 4)
+ Et nummer som identifiserer applikasjonen på enheten som skal motta data. IP-adressen finner riktig maskin, portnummeret finner riktig program (f.eks. 80 = HTTP, 25 = SMTP). Kombinasjonen IP + port kalles en "socket".
+ Forkortelser i datakommunikasjon (INFT1007)
+Her er en oversikt over sentrale forkortelser brukt i pensum, med forklaring på hva de står for, hvilket OSI-lag de hører til, og hvilken funksjon de har.

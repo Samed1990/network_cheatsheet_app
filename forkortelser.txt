@@ -1,0 +1,127 @@
+📘 Forkortelser i datakommunikasjon (INFT1007)
+
+ Lenkelaget (Layer 2):
+* VLAN - Virtual LAN: Logisk nettverk innenfor fysisk nettverk, skiller trafikk uten ekstra kabler.
+* MAC - Media Access Control: Unik fysisk adresse brukt for lokal levering av rammer.
+* ARP - Address Resolution Protocol: Oversetter IP-adresser til MAC-adresser.
+* LLC - Logical Link Control: Gir grensesnitt mot nettverkslaget og styrer multipleksering.
+* PPP - Point-to-Point Protocol: Brukes til direkte forbindelser mellom to noder, ofte i modemforbindelser.
+* CSMA/CD - Carrier Sense Multiple Access with Collision Detection: Ethernet-teknikk for å oppdage kollisjoner.
+* CSMA/CA - Collision Avoidance: WiFi-teknikk som forsøker å unngå kollisjoner.
+* RTS/CTS - Request To Send / Clear To Send: Kontrollmekanisme i trådløs kommunikasjon for å reservere kanal.
+* FCS - Frame Check Sequence: Brukes til å sjekke om rammen er mottatt med feil.
+* CRC - Cyclic Redundancy Check: Feildeteksjon brukt i Ethernet-rammer.
+* DTP - Dynamic Trunking Protocol: Forhandler trunk-forbindelse mellom svitsjer.
+* VTP - VLAN Trunking Protocol: Distribuerer VLAN-konfigurasjon til flere svitsjer.
+* STP - Spanning Tree Protocol: Forhindrer løkker i nettverk ved å deaktivere enkelte forbindelser.
+* CDP - Cisco Discovery Protocol: Cisco-protokoll for å oppdage andre Cisco-enheter.
+* MTU - Maximum Transmission Unit: Maksimalt antall byte som kan sendes i én ramme.
+
+ Nettverkslaget (Layer 3):
+* IP - Internet Protocol: Brukes til å adressere og rute pakker mellom nettverk.
+* ISP - Internet Service Provider: Tilbyr internettforbindelse og ruter trafikk mot eksterne nett.
+* ICMP - Internet Control Message Protocol: Brukes til feilmeldinger og diagnostikk (f.eks. ping).
+* BGP - Border Gateway Protocol: Brukes mellom autonome systemer for ruting på Internett.
+* OSPF - Open Shortest Path First: Brukes til intern ruting i større nettverk.
+* RIP - Routing Information Protocol: Enkel ruteprotokoll basert på hop-count.
+* NAT - Network Address Translation: Oversetter mellom private og offentlige IP-adresser.
+* PAT - Port Address Translation: Utvider NAT med portnummer for flere samtidige forbindelser.
+* ACL - Access Control List: Brukes til å filtrere trafikk basert på IP, port eller protokoll.
+* QoS - Quality of Service: Prioriterer trafikk for bedre ytelse for viktige tjenester.
+* MPLS - Multiprotocol Label Switching: Ruter pakker basert på etiketter i stedet for IP-adresser.
+* DMZ - Demilitarized Zone: Del av nettverk som isolerer offentlige tjenester fra internt nett.
+
+ Transportlaget (Layer 4):
+* TCP - Transmission Control Protocol: Pålitelig og ordnet levering av data.
+* UDP - User Datagram Protocol: Rask, upålitelig dataoverføring uten forbindelse.
+* TLS - Transport Layer Security: Krypteringsprotokoll brukt i HTTPS.
+* SSL - Secure Sockets Layer: Eldre krypteringsprotokoll for sikker kommunikasjon.
+* ACK - Acknowledgement: Brukes til å bekrefte mottak av data.
+* SYN - Synchronize: Første steg i TCPs treveis håndtrykk.
+* FIN - Finish: TCP-flagg som avslutter forbindelsen.
+
+ Applikasjonslaget (Layer 7):
+* HTTP - HyperText Transfer Protocol: Brukes av nettlesere til å hente nettsider.
+* HTTPS - HTTP Secure: Kryptert versjon av HTTP via TLS.
+* DNS - Domain Name System: Slår opp domenenavn og returnerer IP-adresser.
+* DHCP - Dynamic Host Configuration Protocol: Tildeler automatisk IP-adresser til klienter.
+* SMTP - Simple Mail Transfer Protocol: Brukes til å sende e-post.
+* POP3 - Post Office Protocol v3: Laster ned e-post fra server til klient.
+* IMAP - Internet Message Access Protocol: Gir tilgang til e-post på server uten å laste ned.
+* FTP - File Transfer Protocol: Overfører filer mellom klient og tjener.
+* TFTP - Trivial File Transfer Protocol: Enkel filoverføring uten pålogging.
+* SSID - Service Set Identifier: Navnet på et trådløst nettverk.
+* WEP - Wired Equivalent Privacy: Tidlig og svak krypteringsprotokoll for WiFi.
+* WPA - Wi-Fi Protected Access: Kryptering for trådløst nettverk.
+* WPA2 - Wi-Fi Protected Access v2: Videreutviklet og sikrere enn WPA.
+* URL - Uniform Resource Locator: Adressen til en ressurs på internett.
+* VoIP - Voice over IP: Tale over IP-nettverk.
+* ICANN - Internet Corporation for Assigned Names and Numbers: Administrerer domenenavn og IP-adresser.
+* IETF - Internet Engineering Task Force: Utvikler åpne standarder for internett.
+* IEEE - Institute of Electrical and Electronics Engineers: Utvikler nettverksstandarder som Ethernet.
+
+ Diverse:
+* PDU - Protocol Data Unit: Navn på datapakken på hvert lag i OSI-modellen.
+* OSI - Open Systems Interconnection: Standardisert 7-lags kommunikasjonsmodell.
+* DSL - Digital Subscriber Line: Internett-teknologi over telefonlinje.
+
+
+📘 Binære vekter:
+
+Binære vekter, som brukes for å forstå og regne ut nettmaske, antall IP-adresser og antall brukbare adresser i et subnett.
+
+Når vi ser på én oktett i en IP-adresse (f.eks. 255.255.255.0), så kan vi tenke slik:
+
+
+Bitplass	Binærverdi	Desimalverdi
+1. bit	10000000	128
+2. bit	01000000	64
+3. bit	00100000	32
+4. bit	00010000	16
+5. bit	00001000	8
+6. bit	00000100	4
+7. bit	00000010	2
+8. bit	00000001	1
+Når du setter sammen 1-ere fra venstre og slutter når du kommer til 0-er, får du f.eks.:
+
+11111111 = 255
+
+11111100 = 252
+
+11110000 = 240
+
+11000000 = 192
+
+Dette kalles nettmaskens desimalverdi, og forteller hvor mange biter som er "låst" til nettverk.
+
+🧠 Slik bruker du det i praksis
+Eksempel: IP = 192.168.1.0/26
+Hva betyr /26?
+Det betyr at 26 av 32 biter er nettverksbiter, resten er vertsbiter.
+Du har altså 6 biter til host (32 - 26 = 6).
+
+Hvor mange IP-adresser får du?
+Formel: 2^antall host-biter
+→ 2^6 = 64 IP-adresser totalt
+
+Hvor mange brukbare IP-er får du?
+Trekk fra 2: én til nettverksadresse, én til broadcast
+→ 64 - 2 = 62 brukbare IP-adresser
+
+Hvilken nettmaske tilsvarer /26?
+De første 3 oktettene er 255 (8+8+8 = 24 biter), så vi trenger 2 biter til i den siste:
+11000000 = 192
+→ Nettmaske: 255.255.255.192
+
+🔁 Oppsummert:
+
+### CIDR-tabell
+
+| CIDR (/x) | Host-biter | Antall IP-er | Brukbare | Nettmaske         |
+|----------|-------------|--------------|----------|-------------------|
+| /24      | 8           | 256          | 254      | 255.255.255.0     |
+| /25      | 7           | 128          | 126      | 255.255.255.128   |
+| /26      | 6           | 64           | 62       | 255.255.255.192   |
+| /27      | 5           | 32           | 30       | 255.255.255.224   |
+| /28      | 4           | 16           | 14       | 255.255.255.240   |
+| /29      | 3           | 8            | 6        | 255.255.255.248   |
