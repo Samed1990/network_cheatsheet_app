@@ -221,6 +221,7 @@ MAC-adresser endres på hvert hopp (nytt lenkelag)
 IP-adresser forblir de samme hele veien
 
 🔁 4. Gjentas på hvert hopp i nettet
+
 På hvert ledd i internett-rutingen skjer:
 
 Ruteren mottar IP-pakken
