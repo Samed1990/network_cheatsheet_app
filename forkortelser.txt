@@ -125,3 +125,136 @@ De første 3 oktettene er 255 (8+8+8 = 24 biter), så vi trenger 2 biter til i d
 | /27      | 5           | 32           | 30       | 255.255.255.224   |
 | /28      | 4           | 16           | 14       | 255.255.255.240   |
 | /29      | 3           | 8            | 6        | 255.255.255.248   |
+
+
+🧠 Hva er en IP-adresse?
+IP-adressen er en logisk adresse som identifiserer en enhet på et nettverk, uansett hvor den er i verden.
+
+Brukes på nettverkslaget (Layer 3).
+
+En IP-adresse er unikt identifiserende innenfor et nettverk, og kan endres (f.eks. via DHCP).
+
+Eksempel:
+Din PC kan ha IP: 192.168.1.10, mens skriveren i nettverket har 192.168.1.50.
+
+🧠 Hva er en MAC-adresse?
+MAC-adressen er en fysisk, fast adresse som brikkes inn i nettverkskortet (som et serienummer).
+
+Brukes på lenkelaget (Layer 2).
+
+MAC står for Media Access Control og ser typisk slik ut: 3A:1B:4F:99:AB:22.
+
+Endres ikke uten videre (men kan “forfalskes” eller “spoofes”).
+
+🧩 Hvordan jobber IP og MAC sammen?
+De jobber i to lag, og kommuniserer via ARP (Address Resolution Protocol):
+
+🌐 1. Du vil sende data til 192.168.1.50
+Din maskin vet bare IP-en, men trenger MAC-adressen for å sende rammen fysisk.
+
+Den sender ut en ARP-forespørsel: "Hvem har IP 192.168.1.50?"
+
+Svar kommer: "Jeg (MAC AA:BB:CC:DD:EE:FF) har den IP-en!"
+
+Din maskin lagrer IP–MAC-par i ARP-tabellen og sender data.
+
+📦 Det som skjer:
+
+IP-adressen brukes for logisk ruting.
+
+MAC-adressen brukes for fysisk levering i lokalnettet.
+📬 Utvidet scenario: Du sender en e-post til Gmail
+🖥️ Din PC har:
+IP: 192.168.1.100
+
+MAC: AA:AA:AA:AA:AA:AA
+
+📡 Din lokale ruter har:
+IP internt: 192.168.1.1, MAC: BB:BB:BB:BB:BB:BB
+
+IP eksternt (mot internett): 203.0.113.2, MAC: CC:CC:CC:CC:CC:CC
+
+📬 Gmail-server:
+IP: 172.217.3.110
+
+📦 Hva skjer når du trykker “Send”?
+🔽 1. PC-en lager pakken
+IP-pakke: Fra 192.168.1.100 → 172.217.3.110
+
+Transport: SMTP-data over TCP
+
+Lenkelag: trenger MAC-adresse til neste hopp
+
+🔍 Men IP-en til Gmail er utenfor lokalnett, så: → PC-en sender den til default gateway = ruteren
+
+PC gjør ARP og finner MAC-en til ruteren: BB:BB:BB:BB:BB:BB
+📦 Ethernet-ramme blir:
+
+MAC-destinasjon: BB:BB:BB:BB:BB:BB (ruterens MAC)
+MAC-avsender: AA:AA:AA:AA:AA:AA
+IP-destinasjon: 172.217.3.110
+IP-avsender: 192.168.1.100
+🔽 2. Ruter mottar rammen og åpner den
+Den ser på IP-destinasjonen: 172.217.3.110
+
+Vet: «Dette må jeg sende videre til ISP»
+
+Den fjerner MAC-headeren og lager en ny Ethernet-ramme
+
+🔁 3. Ny MAC-header – nytt hopp
+La oss si ruteren sender pakken til neste ruter hos ISP:
+
+Neste hopp IP: 203.0.113.1
+
+Ruter gjør ARP → får MAC: DD:DD:DD:DD:DD:DD
+
+📦 Ny ramme:
+
+MAC-destinasjon: DD:DD:DD:DD:DD:DD
+MAC-avsender: CC:CC:CC:CC:CC:CC
+IP-destinasjon: 172.217.3.110
+IP-avsender: 192.168.1.100
+✅ Legg merke til:
+
+MAC-adresser endres på hvert hopp (nytt lenkelag)
+
+IP-adresser forblir de samme hele veien
+
+🔁 4. Gjentas på hvert hopp i nettet
+På hvert ledd i internett-rutingen skjer:
+
+Ruteren mottar IP-pakken
+
+Leser IP-header: “Hvor skal den?”
+
+Finner neste ruter i rutetabellen
+
+Gjør nytt ARP (eller bruker MAC-cache)
+
+Pakker inn i ny ramme med ny MAC-destinasjon
+
+Sender videre
+
+🧠 Når når pakken Gmail?
+Siste ruter i Google sitt nettverk:
+
+Har IP og MAC til Gmail-serveren
+
+Gjør siste ARP for MAC til 172.217.3.110
+
+Sender rammen til serverens nettverkskort
+
+🎯 Hovedpoeng:
+
+Lag	Hva skjer?
+Nettverkslaget	IP-adressene forblir uendret fra avsender til mottaker
+Lenkelaget	MAC-adressene endres for hvert hopp (hver ruter eller node)
+ARP	Brukes lokalt for å finne MAC til neste hopp
+🧩 Virkelighetseksempel:
+Tenk på det som å sende et brev via post:
+
+IP-adressen er den endelige adressen på konvolutten
+
+MAC-adressen er leveringsadressen til hvert postkontor underveis
+
+Brevet (IP-pakken) ligger inni konvolutten (Ethernet-rammen), som pakkes om hver gang det sendes videre
