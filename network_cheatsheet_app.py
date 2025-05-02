@@ -147,11 +147,3 @@ st.info("""
 3. Titlene forblir synlige når du scroller
 4. Du kan enkelt kopiere tekst fra hver seksjon
 """)
-
-st.markdown("""
-### Hvor du kan legge til ditt eget innhold:
-For å oppdatere innholdet, rediger tekstfilene:
-1. `huskelapp.txt`
-2. `forkortelser.txt`
-3. `ovingsoppgaver.txt`
-""")
