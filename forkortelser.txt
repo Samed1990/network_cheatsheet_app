@@ -8,6 +8,40 @@
 * PPP - Point-to-Point Protocol: Brukes til direkte forbindelser mellom to noder, ofte i modemforbindelser.
 * CSMA/CD - Carrier Sense Multiple Access with Collision Detection: Ethernet-teknikk for å oppdage kollisjoner.
 * CSMA/CA - Collision Avoidance: WiFi-teknikk som forsøker å unngå kollisjoner.
+🟢 CSMA/CD – brukes i kablet Ethernet
+En enhet lytter på linja (Carrier Sense)
+
+Hvis det er stille, begynner den å sende
+
+Hvis to enheter sender samtidig → kollisjon
+
+Kollisjon oppdages, og begge stopper, venter tilfeldig tid og prøver igjen
+
+📌 Brukt i Ethernet med hub (delt medium), ikke lenger aktuelt i moderne svitsjede nettverk
+
+🟡 CSMA/CA – brukes i WiFi
+Enhet lytter før sending
+
+Sender ikke umiddelbart – venter først en tilfeldig periode
+
+Sender valgfritt en RTS (Request to Send) – mottaker svarer med CTS (Clear to Send)
+
+Når det er klart, sendes pakken – uten å være sikker på at ingen andre sender samtidig
+
+📌 Brukt i trådløse nettverk, fordi man ikke kan høre mens man sender
+I kablet nettverk (Ethernet med svitsj):
+👉 CSMA/CD trengs ikke lenger, fordi hver enhet har sitt eget kollisjonsfrie medium (full dupleks).
+👉 Moderne Ethernet bypasser hele CSMA/CD.
+
+I trådløse nettverk (WiFi):
+👉 CSMA/CA er nødvendig, fordi man ikke kan høre og sende samtidig.
+👉 Det forhindrer kollisjoner, som er veldig dyre i trådløse medium.
+
+🧠 Konklusjon:
+CSMA/CD var en smart løsning for kabelnett med delt medium, men er i praksis utdatert i dag.
+
+CSMA/CA er mer komplisert, men fortsatt kritisk i moderne WiFi – det gjør det mulig for flere å dele det trådløse mediet uten for mange kollisjoner.
+
 * RTS/CTS - Request To Send / Clear To Send: Kontrollmekanisme i trådløs kommunikasjon for å reservere kanal.
 * FCS - Frame Check Sequence: Brukes til å sjekke om rammen er mottatt med feil.
 * CRC - Cyclic Redundancy Check: Feildeteksjon brukt i Ethernet-rammer.
