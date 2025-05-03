@@ -363,3 +363,23 @@ Hub videresender alt til alle porter
 Ruteren sin port til huben deler det samme kollisjonsdomenet
 
 Det er ikke dedikert trafikkflyt, slik det er på svitsjporter
+
+
+🔐 Hva er QUIC?
+QUIC (Quick UDP Internet Connections) er en nyere transportprotokoll utviklet av Google, som kombinerer fordelene ved TCP, TLS og HTTP/2, men bygger på UDP for å levere data raskere og mer robust over ustabile nett som f.eks. WiFi.
+
+📌 Hovedtrekk og fordeler:
+Basert på UDP
+QUIC bruker UDP i stedet for TCP, slik at det kan implementeres uten endringer i operativsystemets kjerne. Dette gir mer fleksibilitet.
+
+Unngår «head-of-line blocking»
+I TCP blir alt forsinket hvis én pakke går tapt. Med QUIC får hver datastrøm sin egen uavhengige pakkeoverføring. Det betyr at hvis én pakke går tapt (f.eks. bilde 3), kan resten (bilde 1, 2, 4, 5…) vises uten å vente​transport-tcp.
+
+Kryptering er innebygd fra start
+Mens TLS i TCP først starter etter en full treveis håndtrykk, setter QUIC opp både forbindelse og kryptering samtidig. Det betyr raskere oppstart og bedre sikkerhet​opg04-løsning.
+
+Kortere ventetid (latency)
+QUIC gjør at websider lastes raskere fordi den eliminerer flere runder med handshakes. Én "round trip" er nok for å komme i gang.
+
+Brukes i HTTP/3
+HTTP/3 bygger på QUIC. Mange moderne nettlesere (Chrome, Firefox) og nettsteder (Google, YouTube) støtter allerede dette​transport-tcp.
