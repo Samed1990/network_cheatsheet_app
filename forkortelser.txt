@@ -450,7 +450,7 @@ På en hjemmeruter ser du kanskje:
 🟢 LAN-porter: 4 stk (kobles til PC, printer, TV osv.)
 
 
-Den siste setningen:
+
 
 **"SVITSJ HVIS DU KAN, RUT NÅR DU MÅ"**
 
@@ -484,3 +484,18 @@ Bruk ruter når du må krysse subnett, VLAN, eller gå ut på Internett
 PC1 og PC2 er i samme VLAN → svitsj holder
 
 PC1 skal kontakte en webserver på internett → må via ruter
+
+🔁 Gateway – kort forklart
+En gateway brukes når to nettverk med ulike protokoller på lag 3 eller høyere skal kommunisere. Den oversetter og tilpasser data slik at systemer med forskjellig teknologi (f.eks. IP og IPX, eller IP og telefonnett) kan utveksle informasjon.
+
+📦 Eksempler:
+
+IP-telefoni koblet til vanlig telenett
+
+IP-nett koblet til gammelt Novell-nettverk med IPX
+
+🧠 Merk:
+Folk sier ofte "gateway" når de mener "ruter", men en ekte gateway gjør mer – den oversetter protokoller, ikke bare videresender pakker.
+
+🧠 Min forklaring:
+Tenk på gateway som en tolk mellom to språk: Den oversetter det én snakker til noe den andre forstår – men bare det begge faktisk har til felles kan oversettes helt korrekt.
