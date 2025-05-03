@@ -296,12 +296,13 @@ MAC-adressen er leveringsadressen til hvert postkontor underveis
 Brevet (IP-pakken) ligger inni konvolutten (Ethernet-rammen), som pakkes om hver gang det sendes videre
 
 
-* Nettmasken (subnet mask) har en helt sentral rolle i hvordan nettverk fungerer – spesielt på nettverkslaget (Layer 3) med IP-adresser.
 
-Her kommer en enkel og konkret forklaring:
 
 🎯 Hva er nettmaskens rolle?
 Nettmasken avgjør:
+* Nettmasken (subnet mask) har en helt sentral rolle i hvordan nettverk fungerer – spesielt på nettverkslaget (Layer 3) med IP-adresser.
+
+Her kommer en enkel og konkret forklaring:
 
 Hvilken del av IP-adressen som er nettverksadresse
 
