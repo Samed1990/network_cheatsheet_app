@@ -449,3 +449,38 @@ På en hjemmeruter ser du kanskje:
 
 🟢 LAN-porter: 4 stk (kobles til PC, printer, TV osv.)
 
+
+Den siste setningen:
+
+**"SVITSJ HVIS DU KAN, RUT NÅR DU MÅ"**
+
+…er en tommelfingerregel som betyr:
+
+✅ Bruk svitsj (Layer 2) så langt det lar seg gjøre
+Det er raskere, billigere, og mindre ressurskrevende
+
+Svitsjer viderekobler data internt i et lokalnett ved hjelp av MAC-adresser
+
+De krever lite prosessering, og data går direkte fra port til port
+
+Bruk svitsj til intern trafikk i samme nettverk/VLAN
+F.eks.: PC ↔ printer, PC ↔ server
+
+🚦 Bruk ruter (Layer 3) kun når du må
+Når data skal ut av subnettet, til et annet nettverk eller internett
+
+Ruting krever at ruteren leser og vurderer IP-adresser, bruker rutetabeller og avgjør neste hopp
+
+Det er mer komplekst og ressurskrevende
+
+Bruk ruter når du må krysse subnett, VLAN, eller gå ut på Internett
+
+🧠 Enkelt sagt:
+✅ Svitsj = rask og enkel trafikkstyring innenfor nettverket
+
+🟥 Ruter = tregere, men nødvendig når du skal ut av nettverket
+
+📦 Eksempel fra virkeligheten:
+PC1 og PC2 er i samme VLAN → svitsj holder
+
+PC1 skal kontakte en webserver på internett → må via ruter
