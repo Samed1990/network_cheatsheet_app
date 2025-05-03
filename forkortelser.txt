@@ -383,3 +383,69 @@ QUIC gjør at websider lastes raskere fordi den eliminerer flere runder med hand
 
 Brukes i HTTP/3
 HTTP/3 bygger på QUIC. Mange moderne nettlesere (Chrome, Firefox) og nettsteder (Google, YouTube) støtter allerede dette​transport-tcp.
+
+📡 Når bruker vi rutere?
+En ruter brukes når du skal koble sammen forskjellige nettverk – f.eks.:
+
+Kobler lokalnett (LAN) til Internett
+
+Kobler sammen flere subnett/VLAN
+
+Finner beste vei til en annen IP-adresse (via ruting)
+
+Har ofte brannmur, NAT, DHCP og WiFi innebygd
+
+✅ Ruter jobber på Nettverkslaget (Layer 3)
+✅ Rutere leser IP-adresser og avgjør hvor pakken skal sendes videre
+
+🔀 Når bruker vi svitsjer?
+En svitsj brukes når du vil koble sammen flere enheter i samme nettverk – f.eks.:
+
+Koble sammen PC-er, skrivere og servere i ett LAN
+
+Sørge for at data går direkte fra én enhet til en annen
+
+Unngå kollisjoner (hver port = eget kollisjonsdomene)
+
+Også støtte VLAN (avanserte svitsjer)
+
+✅ Svitsj jobber på Lenkelaget (Layer 2)
+✅ Svitsjer bruker MAC-adresser for å sende rammer til riktig port
+
+🤔 Er svitsj en underkomponent av ruter?
+🟥 Nei – ikke direkte.
+En svitsj er ikke en del av ruteren, men:
+
+✅ Mange hjemmerutere inneholder en innebygd svitsj, så det kan se ut som det samme.
+
+📦 Eksempel:
+
+Hjemmeruteren din fra Altibox eller Telenor har ofte:
+
+WAN-port (til internett)
+
+Flere LAN-porter (det er en innebygd svitsj)
+
+🧩 Enkelt bilde:
+Svitsj = etasjen i bygget
+
+Ruter = dørvakten til hele bygningen
+
+🌐 Hva står WAN for?
+WAN = Wide Area Network
+→ Et stort nettverk som dekker et bredt geografisk område – som Internett eller nettverk mellom byer/land.
+
+🧠 Hva er en WAN-port?
+En WAN-port på ruteren er porten der du kobler til Internett – altså til modemet eller til leverandørens nett (f.eks. Altibox, Telenor).
+
+WAN-porten har en offentlig IP-adresse
+
+Den er grensesnittet mellom ditt lokale nettverk (LAN) og omverdenen (Internett/WAN)
+
+📦 Eksempel:
+På en hjemmeruter ser du kanskje:
+
+🔵 WAN-port: 1 stk (kobles til internett)
+
+🟢 LAN-porter: 4 stk (kobles til PC, printer, TV osv.)
+
