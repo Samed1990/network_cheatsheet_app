@@ -499,3 +499,34 @@ Folk sier ofte "gateway" når de mener "ruter", men en ekte gateway gjør mer �
 
 🧠 Min forklaring:
 Tenk på gateway som en tolk mellom to språk: Den oversetter det én snakker til noe den andre forstår – men bare det begge faktisk har til felles kan oversettes helt korrekt.
+
+
+🖥️ Hva er en host?
+En host er enhver enhet som kan sende eller motta data i et nettverk. Det kan være:
+
+PC
+
+Mobil
+
+Skriver
+
+Server
+
+Kamera
+
+Router (ofte)
+
+🔹 En host har en IP-adresse og deltar aktivt i datakommunikasjon.
+
+🖥️ Hva er en server?
+En server er en spesiell type host som tilbyr tjenester til andre enheter (kalt klienter). Eksempler:
+
+Webserver (HTTP)
+
+E-postserver (SMTP/IMAP)
+
+DNS-server
+
+Filserver
+
+🔸 Serveren venter på forespørsler, og svarer med innhold eller data.
