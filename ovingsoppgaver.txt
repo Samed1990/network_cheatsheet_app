@@ -1,3 +1,353 @@
+**Eksamensoppgave i Datakommunikasjon 2023, INFT1007**
+
+OPPGAVE: OSI-MODELLEN
+
+a) Beskriv den forenklede OSI-modellen, med sine lag.
+
+Den forenkla OSI-modellen har disse lagene:
+- Applikasjonslaget: Applikasjoner og deres protokoller. F.eks. http, smtp, dns, …
+- Transportlaget: Protokoller som TCP, UDP og QUIC
+- Nettverkslaget: IP-protokollene og ruting
+- Lenkelaget: Pakker sendes fra enhet til enhet. Her finner vi macadresser.
+- Det fysiske laget: Her har vi kabler, antenner, sendere, mottakere – og elektromagnetiske signaler.
+
+b) Hva som skjer på de ulike lagene for «nslookup ntnu.no»:
+- Applikasjonslaget: Her kjøres nslookup, som benytter applikasjonslagsprotokollen DNS.
+- Transportlaget: Her brukes transportprotokollen UDP
+- Nettverkslaget: Her brukes IP (eller IPv6). Pakker rutes til serveren, og tilbake.
+- Lenkelaget: Pakker rammes inn, får mac-adresse og sendes til neste enhet.
+- Fysisk lag: Pakkene sendes som en strøm av bits, modulert på et elektrisk eller optisk signal.
+
+OPPGAVE: HUB, SVITSJ, RUTER
+
+a) Forklar kort hva hub, svitsj og ruter gjør.
+
+b) På hvilke lag i OSI-modellen finner vi hub, svisj og ruter?
+
+Svar på både a) og b):
+
+hub: 
+- En del av det fysiske laget. 
+- Signaler som kommer inn på én port, sendes ut på alle de andre. 
+- Utgjør ett kollisjonsdomene.
+
+svitsj: 
+- En del av lenkelaget. 
+- Pakker videresendes fortrinnsvis til korrekt port basert på macadresse, eller til alle andre hvis korrekt port ikke er kjent. 
+- Hver port er et separat kollisjonsdomene.
+
+ruter: 
+- En del av nettverkslaget. 
+- Pakker sendes videre til neste ruter eller mottaker, langs beste vei. 
+- Vedlikeholder rutetabeller. 
+- Skiller mellom ulike ip-nett / kringkastingsdomener.
+
+OPPGAVE: KOLLISJONS- OG KRINGKASTINGSDOMENER
+
+a) Hva har vi vanligvis mest av, kollisjons- eller kringkastingsdomener? Forklar kort hvorfor det er slik.
+
+Vanligvis har vi fler kollisjonsdomener enn kringkastingsdomener. Alle maskiner i samme subnett, er nødvendigvis i samme kringkastingsdomene også. Men et slikt nettverk inneholder ofte svitsjer, som deler det inn i mange kollisjonsdomener. (Hver svitsjeport er et eget kollisjonsdomene.)
+
+Rutere er det eneste som deler nettet opp i flere kringkastingsdomener. De deler også opp i kollisjonsdomener, så det er vanskelig å få fler kringkastingsdomener.
+
+b) Et eksempelnettverk har én ruter. Jeg har koblet en svitsj og en hub til ruteren. Til huben har jeg koblet tre PCer og en mac. Jeg har koblet fire servere til svitsjen. Gjør rede for hvilke kollisjonsdomener og kringkastingsdomener som finnes i dette nettverket.
+
+Ruteren deler nettet opp i to kringkastingsdomener. Det ene består av svitsjen og alt som er koblet til den. Det andre består av huben, og alt som er koblet til den.
+
+Huben er ett kollisjonsdomene. Svitsjen har ett kollisjonsdomene per forbindelse.
+
+Kollisjonsdomener:
+1. huben, og alt som er koblet til den
+2. forbindelsen svitsj–ruter
+3. server1
+4. server2
+5. server3
+6. server4
+
+I alt, 2 kringkastingsdomener og 6 kollisjonsdomener.
+
+OPPGAVE: WWW
+
+Hva er forskjellen mellom «Internett» og «World wide web»?
+
+Internettet er et stort nettverk med mange millioner maskiner og infrastruktur som rutere, svitsjer, kabler m.m.
+
+World wide web er en populær tjeneste som finnes på Internettet, basert på http/https.
+
+OPPGAVE: PARITET
+
+Bokstaven «F» har ascii-koden 1000110 binært. Hva blir den binære koden med henholdsvis like og ulike paritet?
+
+Lik: 10001101
+Ulik: 10001100
+
+OPPGAVE: AUTONOME SYSTEMER
+
+a) Hva er et «autonomt system» på Internettet?
+
+En del av Internettet (maskiner, rutere, infrastruktur) som administreres av én driftsorganisasjon.
+
+b) Hvilken ruteprotokoll bruker vi mellom ulike autonome systemer?
+
+Mellom ulike autonome systemer brukes BGP-4. Hvert AS identifiseres med et nummer.
+
+OPPGAVE: NETTVERK
+
+Ta utgangspunkt i nettverket 10.0.64.0/18. Hva blir laveste og høyeste ip-adresse i dette nettverket? Hva blir broadcastadressen?
+
+Jeg vil heller dele dette nettet opp i to mindre nettverk. Hva blir høyeste ip-adresse, laveste ipadresse og broadcastadresse i hvert av disse nettverkene?
+
+a)
+Laveste: 10.0.64.1
+Høyeste: 10.0.127.254
+Broadcast: 10.0.127.255
+
+b)
+Nett1: 10.0.64.0/19
+Laveste: 10.0.64.1
+Høyeste: 10.0.95.254
+Broadcast: 10.0.95.255
+
+Nett2: 10.0.96.0/19
+Laveste: 10.0.96.1
+Høyeste: 10.0.127.254
+Broadcast: 10.0.127.255
+
+OPPGAVE: NETTMASKER
+
+a) Forklar hva nettverksmasken brukes til.
+
+Nettverksmasken brukes for å skille mellom host-delen og nettverksdelen av en ip-adresse. Enheter med lik host-del er i samme nett, og kan kommunisere direkte. Enheter med ulik host-del, er adskilt av rutere.
+
+b) Netverksmasker kan skrives på gammel og ny måte. Er 255.255.255.128 og /25 samme nettmaske, eller ikke? Forklar.
+
+255.255.255.128 er en nettmaske med 25 bits satt. (Hver gruppe med 255 er 8 bits, og 128 er den siste biten av de 25.)
+
+/25 er den moderne måten å beskrive en nettmaske med 25 bits. Så ja, de to nettmaskene er like!
+
+OPPGAVE: BYGGE NETT
+
+Hvilket nett er dyrest å bygge ut, transportnettet eller aksessnettet? Forklar hvorfor.
+
+Aksessnettet er dyrest. Det går ut til hver enkelt bruker, i praksis må brukeren ta hele kostnaden for sin bit av aksessnettet. Transportnettet, og kostnadene ved å ha det, deles mellom mange brukere. Transportnettet har noen lange strekk, men det er likevel mindre enn aksessnettet i utstrekning.
+
+OPPGAVE: BRANNMUR
+
+Brannmurer finnes i flere typer, f.eks. pakkefilter og innholdsfilter. Forklar hvordan disse to typene fungerer.
+
+Pakkefilter:
+Filteret ser på pakker, for det meste en om gangen. Pakker stoppes eller slippes frem, avhengig av innhold. Ser typisk på felter som fra- og til ip-adresse, portnumre og TCP-flagg. Hver pakke undersøkes for seg.
+
+Innholdsfilter:
+Filteret forstår en protokoll (eller fler), og bruker kunnskapen til å sjekke det som går gjennom. Epostfilter kan f.eks. samle opp en hel melding, for deretter å sjekke om det er spam eller vedlegg med virus. Dermed slippes meldingen gjennom – eller ikke. Selv om en melding er stor og kan involvere hundrevis av pakker. Slik funksjonalitet kan ikke oppnås med pakkefiltre, fordi et virus kan være stort og delt opp over mange pakker. Virussignaturen kan dermed ikke sjekkes ved å se på enkeltpakker.
+
+En adblocker for nettleseren er et annet eksempel på innholdsfilter. Her er det http som forstås, og innholdet sjekkes. Deretter vil det enten vises, eller droppes.
+
+OPPGAVE: PORTNUMMER
+
+Forklar hva portnumre brukes til.
+
+Portnummmeret er en del av ip-pakka. Til-portnummeret forteller hvilken tjeneste det gjelder, som http eller smtp. Fra-portnummeret identifiserer hvilken forbindelse det gjelder. (En nettleser kan f.eks åpne flere sider på samme nettsted samtidig, og må kunne skille mellom disse.)
+
+OPPGAVE: TCP
+
+Hva går teknikken «glidende vindu» ut på? Hva slags fordel oppnår vi?
+
+Raskere dataoverføring. Partene kan sende fra seg mer enn én pakke (vindusstørrelsen) før de begynner å vente på kvittering. Dermed utnyttes tilgjengelig båndbredde bedre. Vindusstørrelsen begrenses, slik at det heller ikke sendes for mange pakker på en gang.
+
+OPPGAVE: DNS
+
+Vi kan slå opp mange slags data i DNS. Hva finner vi når vi slår opp recordtypen «mx», og hva finner vi når vi slår opp typen «aaaa»?
+
+mx: mail exchanger, hvilke servere som tar imot epost for det aktuelle domenet, og deres prioriteter.
+
+aaaa: IPv6-adressen for det aktuelle domenet.
+
+
+**EKSMEN INFT1005 2024 - LØSNINGSFORSLAG**
+
+
+OSI-MODELLEN
+
+1. Beskriv den forenkla OSI-modellen med sine lag.
+
+Applikasjonslaget:
+- Jobber mot brukeren
+- Kommuniserer med transportlaget
+
+Transportlaget:
+- Står for ende-til-ende kommunikasjon
+- Håndterer flytkontroll
+- Identifiserer hva som transporteres med portnumre
+- Overlater detaljer til nettverkslaget
+
+Nettverkslaget:
+- Står for ruting
+- Bruker ip-adresser
+- Rutere finner vei for pakker fra sender til mottaker
+- Overlater detaljer til lenkelaget
+
+Lenkelaget:
+- Håndterer kommunikasjon mellom nabonoder
+- Bruker ethernetrammer og mac-adresser
+- Håndterer kollisjoner avhengig av forbindelsestype
+
+Fysiske laget:
+- Signalering med elektriske spenninger, radiobølger eller lys
+
+2. Epost-sending over OSI-lagene:
+
+Applikasjonslaget:
+- Epostklient/app
+- Bruker SMTP-protokollen
+
+Transportlaget:
+- Bruker TCP for å sikre levering
+
+Nettverkslaget:
+- Bruker IP
+
+Lenkelaget:
+- Bruker ethernet eller wifi
+
+Fysiske laget:
+- Kabler og elektriske signaler (eller radiobølger)
+
+PAKKESVITSJET NETT
+
+Forskjeller mellom pakkesvitsjet og linjesvitsjet nettverk:
+
+Linjesvitsjet nett (f.eks. telenett):
+1. Forbindelse etableres først
+2. All kommunikasjon går over samme forbindelse
+3. Forbindelsen er eksklusivt opptatt under bruk
+4. Nedkobling etter bruk
+
+Pakkesvitsjet nett:
+1. Ingen fast linje etableres
+2. Pakker sendes individuelt
+3. Pakker kan ta ulike ruter
+4. Pakker kan ankomme i feil rekkefølge
+5. Lavere overhead
+6. Flere kommunikasjoner kan dele samme nett
+7. Ingen eksklusive forbindelser
+
+URL
+
+1. URL definisjon:
+- Uniform Resource Locator (Uniform RessursLokator)
+- Spesifiserer nettressurs med protokoll, tjener og ressursnavn
+
+2. Komponenter i http://www.elg.no:80/index.html:
+- http://: Protokoll
+- www.elg.no: Domenenavn for tjener
+- :80: Portnummer
+- index.html: Ressursnavn (nettside)
+
+HTTP
+
+1. HTTP Referer:
+- Angjer hvor brukeren kom fra (forrige side)
+- Nyttig for nettsidedesign og analyse
+
+2. Tredjeparts cookie:
+- Cookie fra annen aktør enn besøkt nettsted
+- Ofte fra reklamefirmaer
+- Lagres i nettleseren
+
+PROXY
+
+Webproxy bruk:
+- Mellomtjener mellom klienter og webservere
+- Vanlige bruksområder:
+  * Caching: Lagrer ofte brukte sider for raskere tilgang
+  * Sikkerhet: Filtrerer skadelig innhold (f.eks. virus)
+  * Serverbeskyttelse: Blokkerer angrep mot hovedserver
+
+EPOST
+
+1. Epostprotokoller:
+- SMTP (hovedprotokoll)
+- IMAP
+- POP
+- HTTPS
+
+2. Sikkerhetsproblemer med epost (to eksempler):
+- Spam
+- Virus
+- Phishing
+- Uønsket innsyn
+
+3. Mottiltak mot sikkerhetsproblemer:
+- Innholdsfiltre mot skadelig innhold
+- Kryptering mot uønsket innsyn
+- Ansattopplæring mot phishing
+
+TRANSPORTLAGET
+
+1. Transportprotokoller (tre eksempler):
+- TCP
+- UDP
+- QUIC
+
+2. Selective Acknowledgement (SACK):
+- Selektiv bekreftelse av pakker ved feil rekkefølge
+- Unngår å sende alt på nytt ved enkeltpakketap
+- Mer effektiv enn standard ACK
+
+3. TCP-flagg for forbindelser:
+- SYN: Opprett forbindelse
+- FIN: Avslutt forbindelse
+
+NETTVERK (10.0.44.0/23)
+
+1. Adresseområde:
+- Laveste IP: 10.0.44.1
+- Høyeste IP: 10.0.45.254
+- Antall noder: 510
+
+2. Deling i to undernett:
+
+Nett1:
+- Laveste: 10.0.44.1
+- Høyeste: 10.0.44.254
+- Broadcast: 10.0.44.255
+
+Nett2:
+- Laveste: 10.0.45.1
+- Høyeste: 10.0.45.254
+- Broadcast: 10.0.45.255
+
+RUTING
+
+1. Dynamisk ruting:
+- Rutere kommuniserer om kjente nettverk
+- Deler informasjon om avstand og båndbredde
+- Finner optimal rute for pakker
+- Automatisk tilpasning til nettverksendringer
+
+2. Autonomt system (AS):
+- Nettverksgruppe med felles driftsorganisasjon
+- Administreres uavhengig av andre AS
+- Identifiseres med AS-nummer
+
+VPN
+
+1. Personlig VPN-bruk:
+- Sikker kryptert kommunikasjon
+- Skjuling av IP-adresse
+- Økt anonymitet
+- Omgåelse av geografiske restriksjoner
+
+2. Bedrifts-VPN:
+- Sikker tilgang til interne ressurser
+- Kryptert forbindelse for ansatte utenfor kontoret
+- Mulighet for hjemmekontor og reisearbeid
+
+
+
+
+
 📘 Øvings-eksamen i INFT1007: Datakommunikasjon
 ________________________________________
 
