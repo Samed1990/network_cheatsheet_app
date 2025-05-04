@@ -1526,3 +1526,27 @@ Nei, Internett har ingen garanti for tjenestekvalitet og kan ved høy belastning
 12. Hva er plug-ins?
 Tilleggsprogramvare for nettleseren. Eksempel: Flashplayer, Java, PDF-visere.
 
+Cookies (informasjonskapsler) er små tekstfiler som nettsteder lagrer på datamaskinen eller mobilen din via nettleseren din. De brukes til å huske informasjon om deg mellom besøk.
+
+🍪 Hva gjør cookies?
+Her er de viktigste tingene cookies brukes til:
+
+Huske innlogging og innstillinger
+
+Du slipper å logge inn hver gang du besøker et nettsted.
+
+Eksempel: Nettbutikker husker hva du har i handlekurven.
+
+Personalisere innhold
+
+Nettsiden kan huske hvilket språk du valgte sist, eller vise deg tilpasset reklame.
+
+Sporing og analyse
+
+Nettsteder (og reklamenettverk) bruker cookies for å se hvordan du bruker siden, hvor lenge du blir, hvilke sider du klikker på, osv.
+
+Dette brukes til både forbedring og markedsføring.
+
+Sesjonsstyring
+
+Midlertidige cookies brukes til å holde deg «pålogget» i en økt – f.eks. under et kjøp.
