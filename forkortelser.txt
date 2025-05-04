@@ -559,8 +559,11 @@ En VPN kan bruke flere forskjellige teknologier for å lage tunnelen – og en a
 
 🤝 Forholdet mellom IPSec og VPN
 VPN = idéen |	IPSec = verktøyet
+
 VPN lager en sikker tunnel mellom to ender	| IPSec kan brukes til å kryptere trafikken i denne tunnelen
+
 VPN kan bruke ulike protokoller |	IPSec er én av de mest brukte
+
 
 📘 Eksempler:
 1. 🧳 Bedrift–hjemmebruker (klient-VPN):
