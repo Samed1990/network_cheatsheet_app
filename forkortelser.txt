@@ -530,3 +530,75 @@ DNS-server
 Filserver
 
 🔸 Serveren venter på forespørsler, og svarer med innhold eller data.
+
+
+🔐 Hva er IPSec?
+IPSec (Internet Protocol Security) er en samling av protokoller som gir sikker kommunikasjon over IP-nettverk, ved å:
+
+🔒 Kryptere data (slik at uvedkommende ikke kan lese det)
+
+🔐 Autentisere avsender og mottaker
+
+🧾 Sikre dataintegritet (oppdage om data er tuklet med)
+
+🧠 IPSec jobber på Nettverkslaget (Layer 3) i OSI-modellen, og sikrer IP-pakker direkte, uansett hvilken applikasjon eller port som brukes.
+
+📦 Hva brukes IPSec til?
+Sikker kommunikasjon over Internett
+
+VPN-forbindelser mellom lokasjoner (kontor–kontor)
+
+Tilgang til bedriftens nettverk hjemmefra
+
+Beskyttelse av sensitive data i offentlige nettverk
+
+🌐 Hva er en VPN?
+VPN (Virtual Private Network) er et konsept: En teknikk for å skape en trygg, privat tunnel over et usikkert nettverk (som Internett).
+
+En VPN kan bruke flere forskjellige teknologier for å lage tunnelen – og en av dem er IPSec.
+
+🤝 Forholdet mellom IPSec og VPN
+VPN = idéen |	IPSec = verktøyet
+VPN lager en sikker tunnel mellom to ender	| IPSec kan brukes til å kryptere trafikken i denne tunnelen
+VPN kan bruke ulike protokoller |	IPSec er én av de mest brukte
+
+📘 Eksempler:
+1. 🧳 Bedrift–hjemmebruker (klient-VPN):
+Du jobber hjemmefra og kobler deg til jobben via en VPN.
+
+VPN-klienten på PC-en din bruker IPSec til å:
+
+Kryptere trafikken
+
+Autentisere deg
+
+Sende sikker trafikk til bedriftens nett
+
+Resultat: Det virker som du er "inne" på jobbens nett, selv om du sitter hjemme.
+
+2. 🏢🏢 To kontorer kobles sammen (nettverk-til-nettverk VPN):
+En bedrift har to kontorer i ulike byer. De bruker rutere som snakker IPSec for å lage en fast kryptert tunnel mellom nettverkene.
+
+Resultat: All intern trafikk mellom kontorene går trygt gjennom Internett via IPSec.
+
+🔁 Protokoller i IPSec:
+Komponent	Forklaring
+AH (Authentication Header)	Gir autentisering og dataintegritet, men ikke kryptering
+ESP (Encapsulating Security Payload)	Gir kryptering og/eller autentisering
+IKE (Internet Key Exchange)	Brukes til å forhandle og utveksle nøkler sikkert
+
+👉 I praksis brukes ESP + IKE mest i VPN-tjenester.
+
+🧱 IPSec har to modi:
+Modus	Brukes til	Beskrivelse
+Transport mode	Maskin-til-maskin (ofte internt)	Kun IP-pakkens nyttelast krypteres
+Tunnel mode	Nettverk-til-nettverk (VPN)	Hele IP-pakken pakkes inn og krypteres
+
+✅ Oppsummert:
+IPSec er en sikkerhetsprotokoll som brukes til å kryptere og autentisere IP-trafikk
+
+Den brukes ofte som "motor" i VPN-løsninger
+
+IPSec sikrer trafikken på nettverkslaget, uavhengig av applikasjoner
+
+Andre VPN-teknologier finnes også (f.eks. SSL VPN, WireGuard, OpenVPN), men IPSec er standard i bedriftsnettverk
