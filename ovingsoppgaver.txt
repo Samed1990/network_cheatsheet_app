@@ -1,4 +1,4 @@
-**Eksamensoppgave i Datakommunikasjon 2023, INFT1007**
+** Eksamensoppgave i Datakommunikasjon 2023, INFT1007 **
 
 
 OPPGAVE: OSI-MODELLEN
