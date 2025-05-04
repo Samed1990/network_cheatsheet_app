@@ -1,5 +1,6 @@
 **Eksamensoppgave i Datakommunikasjon 2023, INFT1007**
 
+
 OPPGAVE: OSI-MODELLEN
 
 a) Beskriv den forenklede OSI-modellen, med sine lag.
@@ -368,6 +369,363 @@ VPN
 - Mulighet for hjemmekontor og reisearbeid
 
 
+📘 Prøveeksamen INFT1007 – Datakommunikasjon (avansert nivå)
+Totalt: 12 oppgaver
+Anbefalt tid: 3–4 timer
+
+🧩 Oppgave 1 – OSI og grunnprinsipper
+**a)** Nevn de fem lagene i den forenklede OSI-modellen og forklar hovedfunksjonen til hvert.  
+**Svar:**  
+1. Applikasjonslaget – Brukertjenester (f.eks. HTTP, DNS, SMTP).  
+2. Transportlaget – Sikrer endepunkt-til-endepunkt-kommunikasjon, TCP/UDP.  
+3. Nettverkslaget – Ruting med IP-adresser.  
+4. Lenkelaget – Leverer rammer lokalt, bruker MAC-adresser.  
+5. Fysiske laget – Sender bitstrøm over fysisk medium.  
+
+**b)** Hva er en PDU, og hvordan endres den gjennom lagene?  
+**Svar:**  
+En PDU (Protocol Data Unit) er datapakken på hvert lag:  
+- Applikasjon: Data  
+- Transport: Segment/datagram  
+- Nettverk: IP-pakke  
+- Lenke: Ramme  
+- Fysisk: Bitstrøm  
+
+🧠 Oppgave 2 – Transport og kryptering
+**a)** Hva er forskjellen på symmetrisk og asymmetrisk kryptering?  
+**Svar:**  
+Symmetrisk bruker samme nøkkel til kryptering og dekryptering. Asymmetrisk bruker to nøkler: én offentlig og én privat.  
+
+**b)** Hvorfor brukes ofte begge typene i f.eks. HTTPS?  
+**Svar:**  
+Asymmetrisk brukes for å utveksle en symmetrisk nøkkel sikkert. Deretter brukes den raskere symmetriske nøkkelen for resten av kommunikasjonen.  
+
+**c)** Forklar kort hvordan TLS fungerer i nettlesere.  
+**Svar:**  
+TLS krypterer forbindelsen mellom klient og server. Nettleseren sjekker sertifikatet (offentlig nøkkel), forhandler en sesjonsnøkkel (symmetrisk), og bruker den til sikker datakommunikasjon.  
+
+🛡 Oppgave 3 – Sikkerhet og brannmur
+**a)** Hva er forskjellen mellom en pakkefilter-brannmur og et innholdsfilter?  
+**Svar:**  
+Pakkefilter ser på IP, port og flagg i enkeltpakker. Innholdsfilter forstår protokoller og inspiserer hele innholdet (f.eks. e-post, HTTP).  
+
+**b)** Hva er DMZ og hvorfor brukes det?  
+**Svar:**  
+DMZ (Demilitarized Zone) er et delnett for offentlige tjenester, isolert fra internt nett. Det beskytter mot direkte angrep på interne systemer.  
+
+**c)** Hvordan brukes VPN og IPSec for å sikre eksterne tilkoblinger?  
+**Svar:**  
+En VPN lager en sikker tunnel over Internett. IPSec krypterer IP-trafikken og autentiserer endepunktene. Brukes både til klient- og nettverk-til-nettverk-VPN.  
+
+📡 Oppgave 4 – Aksessmekanismer og trådløst
+**a)** Forklar forskjellen mellom CSMA/CD og CSMA/CA.  
+**Svar:**  
+CSMA/CD (Ethernet) oppdager kollisjoner etter sending. CSMA/CA (WiFi) forsøker å unngå dem ved å lytte og reservere kanal før sending.  
+
+**b)** Hva er RTS/CTS og når brukes det?  
+**Svar:**  
+Brukes i trådløse nett for å reservere sendetid: sender spør med RTS, mottaker svarer med CTS. Hindrer kollisjoner, spesielt ved "hidden node"-problemer.  
+
+**c)** Hva er token-passing og hvilken teknologi brukte det?  
+**Svar:**  
+En kontroll-token sendes mellom noder, og kun den som har token kan sende. Brukt i eldre teknologier som Token Ring.  
+
+🌐 Oppgave 5 – DNS og HTTP
+**a)** Hva skjer når du skriver inn "www.ntnu.no" i nettleseren?  
+**Svar:**  
+1. DNS-oppslag → IP-adresse hentes  
+2. TCP-forbindelse opprettes (port 80 eller 443)  
+3. HTTP-forespørsel sendes til webserver  
+4. Svar mottas og vises i nettleseren  
+
+**b)** Hva er en URL, og hva inneholder den?  
+**Svar:**  
+En URL (Uniform Resource Locator) består av protokoll, domenenavn, port og sti. Eksempel: `https://www.ntnu.no:443/info.html`  
+
+🔌 Oppgave 6 – Nettverksdeling og adressering
+**a)** Forklar forskjellen på MAC- og IP-adresse.  
+**Svar:**  
+MAC er fysisk adresse brukt lokalt (lenkelaget). IP er logisk adresse brukt for ruting mellom nettverk (nettverkslaget).  
+
+**b)** Hva er rollen til ARP?  
+**Svar:**  
+ARP oversetter IP-adresser til MAC-adresser slik at pakken kan sendes over Ethernet.  
+
+**c)** Hva skjer med MAC-adressen underveis når en pakke rutes gjennom flere rutere?  
+**Svar:**  
+MAC-adressen byttes ut ved hvert hopp. IP-adressen forblir den samme.  
+
+📤 Oppgave 7 – Rutere, svitsjer og kringkastingsdomener
+**a)** Hvor mange kollisjons- og kringkastingsdomener i dette oppsettet:  
+- 1 ruter koblet til én svitsj og én hub  
+- Hub har 3 PC-er og 1 skriver  
+- Svitsj har 4 servere  
+
+**Svar:**  
+- Kollisjonsdomener: 1 (hub) + 1 (link svitsj–ruter) + 4 (hver server) = **6**  
+- Kringkastingsdomener: 2 (ruter skiller dem)  
+
+🔢 Oppgave 8 – Subnetting
+Gitt nettverket 192.168.0.0/24. Del det i 4 like subnett. Gi:  
+- Nettadresse  
+- Første og siste brukbare IP  
+- Broadcastadresse  
+
+**Svar:**  
+1. 192.168.0.0/26 → 1–62, broadcast 63  
+2. 192.168.0.64/26 → 65–126, broadcast 127  
+3. 192.168.0.128/26 → 129–190, broadcast 191  
+4. 192.168.0.192/26 → 193–254, broadcast 255  
+
+📦 Oppgave 9 – NAT og IPv4-begrensning
+**a)** Hva gjør NAT og hvorfor trengs det?  
+**Svar:**  
+NAT oversetter mellom private og offentlige IP-adresser. Det lar mange enheter dele én offentlig IP, og sparer IPv4-adresser.  
+
+**b)** Hva er PAT?  
+**Svar:**  
+PAT (Port Address Translation) lar flere forbindelser dele én offentlig IP ved å bruke ulike portnummer.  
+
+🔒 Oppgave 10 – Autentisering og kryptering
+**a)** Forklar hva en digital signatur er.  
+**Svar:**  
+En digital signatur bruker en privat nøkkel til å signere data. Mottaker kan bekrefte avsenderens identitet med avsenders offentlige nøkkel.  
+
+**b)** Hva er forskjellen mellom integritet og konfidensialitet?  
+**Svar:**  
+Integritet = data er ikke endret. Konfidensialitet = data er hemmelig.  
+
+🧪 Oppgave 11 – Verktøy og feilsøking
+**a)** Hva brukes Wireshark til?  
+**Svar:**  
+Wireshark fanger og analyserer nettverkspakker. Brukes til feilsøking, læring og sikkerhetsanalyse.  
+
+**b)** Hva er nslookup, og hvordan bruker vi det?  
+**Svar:**  
+Et kommandolinjeverktøy for DNS-oppslag. Eksempel: `nslookup www.ntnu.no` viser IP-en.  
+
+🧱 Oppgave 12 – Fysisk lag og medier
+**a)** Nevn tre overføringsmedier og fordeler/ulemper.  
+**Svar:**  
+- Kobber: billig, lett å installere, men følsomt for støy.  
+- Fiber: høy fart og rekkevidde, men dyrere.  
+- Trådløst: fleksibelt, men utsatt for forstyrrelser.  
+
+**b)** Hva er forskjellen på signaleringshastighet og overføringshastighet?  
+**Svar:**  
+Signaleringshastighet = antall symbolske endringer per sekund (baud). Overføringshastighet = faktiske bits per sekund (bps).  
+
+
+📘 Utvidet prøveeksamen i INFT1007 – Datakommunikasjon (50 spørsmål med utfyllende svar)
+Anbefalt tid: 5–6 timer
+Strukturert etter sentrale emner i pensum og tidligere øvinger
+
+🧩 Spørsmål 1 – Hva er OSI-modellen, og hvorfor er den viktig?
+Svar:
+OSI-modellen er en teoretisk modell som deler nettverkskommunikasjon inn i sju lag, fra fysisk overføring til brukerens applikasjon. Den hjelper utviklere og administratorer med å forstå og designe nettverksprotokoller og systemer. Ved å dele opp funksjoner i lag, blir det enklere å feilsøke, oppgradere og integrere systemer fra ulike produsenter. Den forenklede modellen som brukes i faget har fem lag: applikasjon, transport, nettverk, lenke og fysisk. OSI-modellen skaper en felles referanseramme for hvordan data beveger seg gjennom et nettverk.
+
+🧩 Spørsmål 2 – Hvordan fungerer DHCP, og hvilken rolle spiller det i et nettverk?
+Svar:
+DHCP (Dynamic Host Configuration Protocol) tildeler automatisk IP-konfigurasjon til enheter i et nettverk. Dette inkluderer IP-adresse, nettverksmaske, gateway og DNS-servere. DHCP sørger for at klienter ikke trenger manuell konfigurering, og bidrar til effektiv bruk av IP-adresser. Når en klient kobles til nettverket, sender den en forespørsel, og serveren svarer med en ledig IP-adresse. Protokollen bruker UDP og portene 67 (server) og 68 (klient).
+
+🧩 Spørsmål 3 – Hva er forskjellen på TCP og UDP, og når bør man bruke hva?
+Svar:
+TCP (Transmission Control Protocol) gir pålitelig og ordnet overføring av data, og brukes når det er viktig at all data kommer frem korrekt, som ved nettsurfing, e-post og filoverføring. TCP bruker mekanismer som 3-veis håndtrykk, bekreftelser og re-transmisjoner. UDP (User Datagram Protocol) er derimot raskere og enklere, men tilbyr ikke garantier. Den brukes i sanntidsapplikasjoner som strømming og nettspill. Valg av protokoll avhenger av om du prioriterer hastighet eller pålitelighet.
+
+🧩 Spørsmål 4 – Hvordan fungerer ARP, og hvorfor trenger vi det?
+Svar:
+ARP (Address Resolution Protocol) brukes for å oversette IP-adresser til MAC-adresser i lokalnettverk. Når en enhet vet IP-en den vil sende til, men mangler MAC, sender den en ARP-forespørsel (broadcast). Enheten med riktig IP svarer med sin MAC-adresse, og avsenderen lagrer det i ARP-tabellen. Uten ARP ville ikke IP-pakker kunne leveres via Ethernet. Protokollen er essensiell for kommunikasjon mellom lag 2 og lag 3.
+
+🧩 Spørsmål 5 – Hva er forskjellen mellom NAT og PAT, og hvorfor brukes de?
+Svar:
+NAT (Network Address Translation) gjør det mulig for enheter med private IP-adresser å kommunisere med Internett via én offentlig IP-adresse. Det gir økt sikkerhet og sparer på antallet offentlige IP-er som trengs. PAT (Port Address Translation) er en type NAT der flere enheter deler samme offentlige IP, men bruker ulike portnummer for å holde forbindelsene adskilt. Dette gjør det mulig for mange brukere å være på nettet samtidig bak én felles adresse, som er vanlig i hjemmenettverk og bedrifter.
+
+... (Spørsmål 6–50 følger i full versjon) ...
+
+🧩 Spørsmål 6 – Hva er forskjellen mellom en svitsj og en ruter?
+Svar:
+En svitsj (Layer 2) videresender rammer basert på MAC-adresser og opererer innenfor ett lokalnett. Den lærer hvilke MAC-adresser som finnes på hvilke porter og sender data kun til riktig mottaker. En ruter (Layer 3) videresender pakker mellom ulike nettverk basert på IP-adresser. Den bruker en rutetabell for å bestemme hvilken vei pakken skal ta. Rutere skiller kringkastingsdomener, mens svitsjer kun deler kollisjonsdomener.
+
+🧩 Spørsmål 7 – Hva er en VLAN og hvorfor brukes det?
+Svar:
+Et VLAN (Virtual Local Area Network) gjør det mulig å dele opp et fysisk nettverk i flere logiske nett. Dette gir økt sikkerhet, mindre broadcast-trafikk og enklere administrasjon. En VLAN-ID settes på trafikken slik at svitsjer vet hvilken "logisk gruppe" den tilhører. Kommunikasjon mellom VLAN krever en ruter eller Layer 3-svitsj. VLAN brukes ofte i store organisasjoner for å skille trafikk mellom avdelinger.
+
+🧩 Spørsmål 8 – Hvordan fungerer en 3-veis håndtrykk i TCP?
+Svar:
+For å etablere en pålitelig forbindelse bruker TCP et tretrinns håndtrykk: 1) Klient sender SYN, 2) Server svarer med SYN-ACK, 3) Klient sender ACK tilbake. Etter dette er forbindelsen etablert og data kan sendes. Denne prosedyren sikrer at begge parter er klare og synkroniserte, og danner grunnlaget for pålitelig kommunikasjon.
+
+🧩 Spørsmål 9 – Hva gjør en proxy-server og hvilke fordeler har den?
+Svar:
+En proxy-server er en mellomtjener mellom klient og tjener. Den kan cache innhold for å redusere lastetid, filtrere trafikk for sikkerhet, og anonymisere brukeren. Proxier brukes i bedrifter og skoler for å kontrollere tilgang til Internett, forbedre ytelse og overvåke aktivitet. Den kan også beskytte interne nettverk mot angrep ved å fungere som buffer.
+
+🧩 Spørsmål 10 – Hvordan fungerer glidende vindu i TCP?
+Svar:
+Glidende vindu lar sender sende flere segmenter uten å vente på bekreftelse for hver. Mottakeren bruker "window size"-feltet til å angi hvor mye data den kan motta. Dette gir effektiv flytkontroll og høyere overføringshastighet. Hvis mottakeren er treg, reduseres vinduet. Teknikken forhindrer overbelastning og gjør TCP raskere enn stopp-og-vent.
+
+🧩 Spørsmål 11 – Hva er forskjellen på en offentlig og en privat IP-adresse?
+Svar:
+Offentlige IP-adresser er globale og kan nås via Internett. Private IP-adresser brukes i lokalnett (f.eks. 192.168.x.x) og er ikke rutbare over Internett. For å kommunisere med Internett, må private adresser oversettes via NAT. Dette gir sikkerhet og reduserer behovet for offentlige adresser. Kun ISP-er og større nettverk bruker offentlige adresser direkte.
+
+🧩 Spørsmål 12 – Forklar hva et autonomt system (AS) er.
+Svar:
+Et autonomt system er en samling IP-nettverk og rutere under én administrativ kontroll. Disse systemene kommuniserer med hverandre via BGP (Border Gateway Protocol). Et AS identifiseres med et unikt nummer (ASN). Innenfor et AS brukes interne ruteprotokoller som OSPF, mens BGP brukes mellom AS-er. Dette gir skalérbar ruting på Internett.
+
+🧩 Spørsmål 13 – Hva er ICMP og hva brukes det til?
+Svar:
+ICMP (Internet Control Message Protocol) brukes for feilmeldinger og diagnostikk i IP-nettverk. Det brukes bl.a. av `ping` og `traceroute` for å sjekke tilgjengelighet og rute. ICMP sender meldinger om feil (f.eks. "host unreachable") eller informasjon (f.eks. "echo request/reply"). Det er en støtteprotokoll til IP og er viktig for nettverksdrift.
+
+🧩 Spørsmål 14 – Hva menes med kringkastingsdomene?
+Svar:
+Et kringkastingsdomene er et område i et nettverk hvor en kringkastingsmelding (broadcast) når alle enheter. I Ethernet skjer dette ved at meldinger sendes til MAC-adressen FF:FF:FF:FF:FF:FF. Svitsjer videresender kringkast, mens rutere stopper det. Dermed er ruteren grensen for kringkastingsdomenet. Mange VLAN eller subnett = mange kringkastingsdomener.
+
+🧩 Spørsmål 15 – Hva er forskjellen på full dupleks og halv dupleks?
+Svar:
+Full dupleks betyr at data kan sendes og mottas samtidig. Halv dupleks betyr at bare én retning kan sende om gangen. Ethernet over moderne svitsjer er vanligvis full dupleks, mens eldre hub-baserte nett eller walkie-talkie bruker halv dupleks. Full dupleks gir høyere ytelse og færre kollisjoner.
+
+... (fortsetter med spørsmål 16–50) ...
+
+🧩 Spørsmål 16 – Hvordan fungerer DNS, og hvorfor er det viktig?
+Svar:
+DNS (Domain Name System) oversetter domenenavn som www.ntnu.no til IP-adresser som datamaskiner forstår. Når en nettleser gjør et oppslag, spør den en DNS-resolver som igjen kontakter rotnivå, toppnivå (TLD) og autoritativ server. DNS reduserer behovet for å huske IP-adresser og gir fleksibilitet. Resultater caches for effektivitet. DNS er avgjørende for nesten all internettbruk.
+
+🧩 Spørsmål 17 – Hva er forskjellen på HTTP og HTTPS?
+Svar:
+HTTP (Hypertext Transfer Protocol) er et protokoll for å overføre nettsider. HTTPS er den sikre varianten som bruker TLS for å kryptere kommunikasjonen. HTTPS gir konfidensialitet, autentisitet og integritet. Det brukes ved netthandel, pålogging og alle sensitive dataoverføringer. Nettlesere viser hengelås for HTTPS-tilkoblinger.
+
+🧩 Spørsmål 18 – Hva er SSID og hvordan fungerer det i WiFi?
+Svar:
+SSID (Service Set Identifier) er navnet på et trådløst nettverk, synlig for brukere når de søker etter nettverk. SSID sendes i beacon-meldinger fra aksesspunktet. Det hjelper klienter med å finne og koble seg til riktig nettverk. Flere aksesspunkt kan dele samme SSID i et ESS for sømløs roaming.
+
+🧩 Spørsmål 19 – Hva er WPA2 og hvorfor er det bedre enn WEP?
+Svar:
+WPA2 (Wi-Fi Protected Access 2) er en sikkerhetsprotokoll for trådløse nettverk som bruker sterkere kryptering enn WEP. WPA2 bruker AES-algoritme som er mer robust mot angrep. WEP er sårbar for sniffing og cracking. WPA2 er i dag standard, mens WPA3 er nyere og enda sikrere.
+
+🧩 Spørsmål 20 – Hva er QoS og hvorfor er det viktig i nettverk?
+Svar:
+QoS (Quality of Service) prioriterer nettverkstrafikk for å sikre at viktige tjenester får nødvendig båndbredde og lav forsinkelse. Det brukes i sanntidsapplikasjoner som VoIP og videokonferanser. QoS merker pakker med prioritet og ruter/svitsjer håndterer trafikken i henhold til reglene. Uten QoS kan slike tjenester oppleve dårlig kvalitet.
+
+🧩 Spørsmål 21 – Hvordan fungerer ping og hva brukes det til?
+Svar:
+`ping` sender ICMP Echo Request til en IP-adresse for å sjekke om den er tilgjengelig. Mottakeren svarer med ICMP Echo Reply. Det brukes til å teste nettverksforbindelse og måle forsinkelse (RTT). Ping er nyttig for feilsøking og diagnose. Hvis det ikke kommer svar, er det ofte et nettverksproblem eller en brannmur som blokkerer ICMP.
+
+🧩 Spørsmål 22 – Hva er et subnett og hvorfor subnetter vi nettverk?
+Svar:
+Et subnett er en underdeling av et IP-nettverk. Det gir bedre struktur, sikkerhet og mindre kringkastingsstøy. Ved subnetting brukes nettverksmaske til å dele IP-adresseområdet i mindre blokker. Det muliggjør effektiv IP-bruk og kontroll av trafikk mellom avdelinger eller funksjoner i en organisasjon.
+
+🧩 Spørsmål 23 – Hva er forskjellen på fysisk og logisk topologi?
+Svar:
+Fysisk topologi beskriver hvordan enheter faktisk er koblet (kabler og utstyr). Logisk topologi beskriver hvordan data flyter mellom enhetene. For eksempel kan fysisk være stjerne, mens logisk er bus. Begge er viktige ved design og feilsøking.
+
+🧩 Spørsmål 24 – Hva er MPLS og hva brukes det til?
+Svar:
+MPLS (Multiprotocol Label Switching) ruter pakker basert på etiketter, ikke IP-adresser. Det gir raskere ruting og støtter QoS og VPN. Brukes ofte i backbone og ISP-nett. MPLS kan kombinere trafikk fra ulike protokoller effektivt.
+
+🧩 Spørsmål 25 – Hvordan fungerer BGP og hva brukes det til?
+Svar:
+BGP (Border Gateway Protocol) er rutingsprotokollen som kobler sammen autonome systemer på Internett. Den annonserer hvilke IP-nett som er tilgjengelige via hvilke AS. BGP bruker policy-baserte beslutninger, ikke bare korteste vei. Det er kritisk for internettets globale ruting.
+
+🧩 Spørsmål 26 – Forklar hva en port er i nettverkssammenheng.
+Svar:
+En port identifiserer en spesifikk tjeneste på en maskin. Den brukes sammen med IP-adressen for å danne en socket. Standardporter inkluderer 80 for HTTP og 443 for HTTPS. Porter mellom 0–1023 er velkjente, mens høyere porter brukes dynamisk eller av spesialtjenester.
+
+🧩 Spørsmål 27 – Hva er en socket og hvordan brukes det?
+Svar:
+En socket består av en IP-adresse og et portnummer. Den representerer en ende av en nettverksforbindelse. To sockets kommuniserer for å sende og motta data. I TCP-programmering åpnes sockets for å lage klient-server-forbindelser.
+
+🧩 Spørsmål 28 – Hva er TTL og hvorfor er det viktig i IP-pakker?
+Svar:
+TTL (Time To Live) er et felt i IP-headeren som hindrer pakker i å sirkulere uendelig. Den starter med en verdi (f.eks. 64) og reduseres med én for hvert hopp. Når den når 0, kastes pakken. Det forhindrer routing loops.
+
+🧩 Spørsmål 29 – Hva er forskjellen på en statisk og en dynamisk IP?
+Svar:
+Statisk IP konfigureres manuelt og endres ikke, mens dynamisk IP tildeles av DHCP og kan variere. Statisk IP brukes for servere og tjenester. Dynamisk IP er enklere og passer best for klienter. Statisk IP gir mer kontroll, men krever administrasjon.
+
+🧩 Spørsmål 30 – Hva er en gateway?
+Svar:
+En gateway er en enhet som kobler to forskjellige nettverk og videresender trafikk mellom dem. I hjemmenettverk er ruteren ofte gateway til Internett. Gateway kan også oversette mellom ulike protokoller eller nettverkstyper. Det er viktig for ekstern kommunikasjon.
+
+... (fortsetter til spørsmål 50) ...
+
+🧩 Spørsmål 31 – Hva er et kollisjonsdomene og hvordan reduseres det?
+Svar:
+Et kollisjonsdomene er et område i nettverket hvor to enheter kan kollidere ved sending samtidig. I gamle nettverk med hub, delte alle enheter samme domene. Moderne svitsjer gir ett kollisjonsdomene per port. Dermed reduseres kollisjoner og øker effektivitet.
+
+🧩 Spørsmål 32 – Hva er forskjellen mellom broadcast, unicast og multicast?
+Svar:
+Broadcast sendes til alle enheter i samme nettverk. Unicast sendes til én bestemt mottaker. Multicast sendes til en gruppe av interesserte mottakere. IP og Ethernet støtter alle tre, og brukes avhengig av applikasjonstype.
+
+🧩 Spørsmål 33 – Hva er forskjellen på IPv4 og IPv6?
+Svar:
+IPv4 bruker 32-bit adresser (ca. 4 milliarder adresser). IPv6 bruker 128-bit adresser og gir enorm kapasitet. IPv6 har innebygd sikkerhet, bedre multicast og enklere konfigurasjon. Overgangen skjer gradvis siden mye infrastruktur fortsatt bruker IPv4.
+
+🧩 Spørsmål 34 – Hvordan fungerer NAT traversal?
+Svar:
+NAT traversal tillater enheter bak NAT å etablere forbindelser over Internett. Teknologier som STUN, TURN og ICE brukes i VoIP og WebRTC for å finne offentlig IP og åpne porter. Det løser problemer med tilkoblinger bak brannmurer.
+
+🧩 Spørsmål 35 – Hva er et MAC-filter og hva brukes det til?
+Svar:
+MAC-filter er en sikkerhetsfunksjon som kun tillater bestemte MAC-adresser å koble seg til nettverket. Det brukes på trådløse rutere og svitsjer. Selv om det øker kontrollen, kan det omgås av avanserte angripere ved MAC-spoofing.
+
+🧩 Spørsmål 36 – Hva er forskjellen på en host og en server?
+Svar:
+En host er enhver enhet med IP-adresse i nettverket, mens en server tilbyr tjenester til andre. Alle servere er hoster, men ikke alle hoster er servere. En PC blir server hvis den kjører en tjeneste som e-post eller web.
+
+🧩 Spørsmål 37 – Hva gjør et innholdsfilter?
+Svar:
+Et innholdsfilter inspiserer data i applikasjonslaget, som e-post eller HTTP, og blokkerer uønsket innhold som reklame, virus eller pornografi. Det brukes i skoler, bedrifter og foreldrekontroll. Det krever at protokollen forstås og tolkes.
+
+🧩 Spørsmål 38 – Hva er forskjellen på polling og token-passing?
+Svar:
+Polling skjer når én sentral enhet spør hver node om den har data å sende. Token-passing bruker en kontroll-token som sirkulerer mellom noder. Polling kan være treg ved mange noder, mens token gir rettferdig tilgang men kan miste token.
+
+🧩 Spørsmål 39 – Hvordan fungerer signalering på det fysiske laget?
+Svar:
+Fysiske laget bruker elektriske, optiske eller radiobølger til å sende bitstrøm. Signaler moduleres og demoduleres, og kan være analoge eller digitale. Mediet påvirker kvalitet, rekkevidde og hastighet. Fysiske egenskaper avgjør feilrater og kapasitet.
+
+🧩 Spørsmål 40 – Hva er forskjellen på synkron og asynkron kommunikasjon?
+Svar:
+Synkron krever at sender og mottaker er tidsmessig synkroniserte. Asynkron bruker start- og stoppbiter for å markere data. Synkron brukes i høyhastighetsforbindelser, mens asynkron er enklere og brukes i eldre serielle grensesnitt.
+
+🧩 Spørsmål 41 – Hva er en DMZ og hvordan fungerer den?
+Svar:
+En DMZ (Demilitarized Zone) er et delnett mellom et internt nettverk og Internett. Offentlige tjenester plasseres her for å redusere risiko. Brannmurer regulerer trafikk mellom DMZ, LAN og Internett. DMZ beskytter interne systemer mot eksterne trusler.
+
+🧩 Spørsmål 42 – Hva er et sertifikat og hvordan brukes det i TLS?
+Svar:
+Et sertifikat bekrefter ektheten til en nettside eller server og inneholder en offentlig nøkkel. Sertifikatet er signert av en CA (Certificate Authority). Nettleseren bruker det til å bekrefte identiteten til serveren i HTTPS. Ugyldige sertifikater gir advarsler.
+
+🧩 Spørsmål 43 – Hva er et kringkastingsproblem og hvordan løses det?
+Svar:
+Kringkastingsproblem oppstår når for mye broadcast-trafikk overbelaster nettverket. Det reduserer ytelsen og kan føre til kollaps. Det løses med subnetting, VLAN, rutere og brannmurer som begrenser spredningen av kringkast.
+
+🧩 Spørsmål 44 – Hva er forskjellen på enkel og selektiv bekreftelse i TCP?
+Svar:
+Enkel bekreftelse (ACK) bekrefter siste mottatte segment i rekkefølge. Selektiv bekreftelse (SACK) tillater mottakeren å indikere hvilke segmenter som mangler. SACK forbedrer ytelsen ved å unngå unødvendig retransmisjon av mottatte segmenter.
+
+🧩 Spørsmål 45 – Hva er forskjellen mellom SMTP, POP3 og IMAP?
+Svar:
+SMTP brukes til å sende e-post. POP3 laster ned e-post til klient og sletter den fra server. IMAP lar klienten lese e-post på serveren og synkroniserer mellom flere enheter. IMAP er mest fleksibel, POP3 mest plassbesparende.
+
+🧩 Spørsmål 46 – Hva er forskjellen på fysisk og logisk adresse?
+Svar:
+Fysisk adresse er MAC-adressen, brent inn i nettverkskortet. Logisk adresse er IP-adressen som tildeles programmatisk. MAC brukes lokalt, IP brukes til ruting. ARP brukes for å finne MAC fra IP.
+
+🧩 Spørsmål 47 – Hvordan fungerer TTL i DNS?
+Svar:
+TTL (Time To Live) i DNS angir hvor lenge et oppslag kan caches. Kort TTL gir ferske data, men økt belastning. Lang TTL sparer trafikk, men kan føre til utdaterte oppslag. TTL balanserer ytelse og nøyaktighet.
+
+🧩 Spørsmål 48 – Hva er et aksesspunkt (Access Point)?
+Svar:
+Et aksesspunkt kobler trådløse klienter til det kablede nettverket. Det fungerer som en bro mellom Ethernet og Wi-Fi. AP-er brukes i kontorer og hjem for å gi trådløs dekning. Flere AP-er kan kobles for å danne ett stort trådløst nett.
+
+🧩 Spørsmål 49 – Hva er et MTU og hva skjer om pakken er for stor?
+Svar:
+MTU (Maximum Transmission Unit) er maks størrelse på en ramme. Hvis en IP-pakke er større, fragmenteres den (hvis tillatt) eller forkastes. Path MTU Discovery brukes for å finne passende MTU for hele ruten.
+
+🧩 Spørsmål 50 – Hva er et fysisk medium og nevn tre typer.
+Svar:
+Et fysisk medium er det som bærer signalet. Tre typer er: kobberkabel (billig, begrenset rekkevidde), fiberoptisk kabel (høy fart, dyr), og trådløst (fleksibelt, men utsatt for støy). Valg av medium påvirker kostnad og ytelse.
+
 
 
 
@@ -684,4 +1042,487 @@ Svar:
 Kobber: billig, enkelt å legge, men kort rekkevidde og støyutsatt.
 Fiber: høy hastighet og lang rekkevidde, men dyr og vanskeligere å installere.
 Trådløst: fleksibelt og mobilt, men følsomt for interferens og har lavere stabilitet.
+
+
+** Løsningsforslagene **
+
+DATAKOMMUNIKASJON - LEKSJON 12 LØSNINGSFORSLAG
+
+IDS, IPS OG VPN
+
+1. Forkortelser:
+- IPS: Intrusion Prevention System
+- IDS: Intrusion Detection System
+- NIDS: Network Intrusion Detection System
+- VPN: Virtuelt Privat Nettverk (Virtual Private Network)
+
+2. Forskjell mellom IDS og NIDS:
+- NIDS: Oppdager inntrengere spesifikt i nettverk
+- IDS: Mer generelt begrep som kan inkludere:
+  * Systemer som oppdager ikke-nettverksbaserte trusler (f.eks. minnepenn-skanning)
+  * Fysiske innbruddsalarm-systemer (utenfor datakontekst)
+
+3. Eksempler på NIDS-aktiviteter:
+- Portscanning (leting etter tjenermaskiner)
+- Ping-scanning (leting etter aktive maskiner)
+- Overbelastningsangrep (unormal høy pakkehastighet)
+- Gjentatte påloggingsforsøk (passordgjettingsangrep)
+- Nettverksbaserte virus som sprer seg
+
+4. Klient-VPN anvendelser:
+- Hjemmekontor: Tilgang til arbeidsplassens interne ressurser
+- Selgerløsninger: Eksterne selgere får tilgang til interne systemer fra kundebesøk/hotell
+
+
+DATAKOMMUNIKASJON - LEKSJON 11 LØSNINGSFORSLAG
+TELETJENESTER
+
+1. Aksessnett som flaskehals:
+Aksessnettet er den dyreste delen å bygge ut. Det kommer av at det kreves mye kabling til enkeltbrukere, og at mange velger rimelige løsninger siden kostnadene ikke kan deles med andre. Å grave ned kabel er kostbart. Transportnettet er forsåvidt like dyrt å grave ned, men her deles kostnadene mellom tusenvis av brukere.
+
+2. Transmisjonsstandarder basert på parkabel:
+Gjennom mange år har det blitt bygd ut et tett og omfattende aksessnett for telefoni basert på trådparkabel. Dermed kan man gjenbruke den allerede eksisterende telefonkabelen uten å gjøre store endringer i aksessnettet, og det er en viktig forutsetning for at de nye aksessformene ikke skal bli altfor dyre.
+
+3. Kabel-TV-nett som aksessnett:
+Kabel-TV-nettet er konstruert for enveis signaloverføring. Evt. må mellomforsterkerne i nettet skiftes ut med 2-veis regeneratorutstyr, andre utveier finnes ikke.
+
+4. ADSL optimalisering for nedlasting:
+Denne måte å fordele kapasiteten på er mest i tråd med behovet for en vanlig bruker. Det er kommunikasjonen til brukeren som krever muligheter til å laste ned store datamengder. Tenk selv over hvor mye du laster ned fra nettet kontra hva du laster opp. Kommunikasjonen til Internett består mye av anrop, kvitteringstrafikk, e-post osv. Og det er tilstrekkelig med lavere bitrate. «Vanlige brukere» har som regel ikke servere.
+
+5. Telefonsamtale ved ADSL-feil:
+Ved å benytte et passivt delefilter oppnår en at telefon/ISDN fremdeles er tilgjengelig. Telefon/ISDN og ADSL opererer i hver sine frekvensområder.
+
+6. CIR i Frame Relay:
+Til en DLCI er det tilordnet en garantert minste datarate. Det er denne raten som betegnes CIR, «Committed Information Rate». CIR-verdien spesifiserer hvor høy datarate man i gjennomsnitt bør sende ut på nettet med. I situasjoner med lav belastning på nettet vil man kunne oppnå høyere datarate enn CIR. Når belastningen øker og blir større enn det nettet kan overføre (opphopning/metning – «congestion»), vil rammer bli kastet. Rammer som har satt DE-biten (DE = «Dicard Eligibility») blir kastet først. Tjenesteleverandørene må optimalisere nettet slik at det er liten sannsynlighet for at rammer går tapt så lenge hastigheten er lavere enn CIR.
+
+7. IPv6 og MPLS:
+MPLS har sitt eget opplegg for ruting ved hjelp av «merkelapper». Dermed er det bare kantruterne som trenger å tilpasses nye protokoller som ipv6. Resten av nettet trenger ingen tilpasning, dermed blir forandringen billig.
+
+DATAKOMMUNIKASJON - LEKSJON 10 LØSNINGSFORSLAG
+NETTVERK I PRAKSIS OG SIKKERHET
+
+1. Forskjell mellom hub og svitsj:
+Hub og svitsj kan brukes om hverandre, men har en del forskjeller. Hub sender signaler/pakker som kommer inn ut på alle de andre tilkoblingene. Dermed kan bare én maskin sende om gangen, de deler på båndbredden. Elektronikken er enkel, en hub opererer på lag 1 (fysisk lag) og prøver ikke «forstå» signalene den formidler. Svitsj sender en pakke som kommer inn ut på den ene forbindelsen som skal ha den. Samtidig kan andre maskiner kommunisere over andre forbindelser. Vi får mer båndbredde. Dette krever mer avansert elektronikk og dataprosessering; en svitsj opererer på lag 2 (lenkelaget).
+
+2. Datamaskinens nettverkstilgang:
+a) Nødvendige elementer:
+Datamaskinen må ha et nettverkskort og operativsystemet må ha fungerende kommunikasjon med dette gjennom driverprogramvare som enten følger med operativsystemet eller som vi har lagt til selv. Vi må i operativsystemet ha en fungerende TCP/IP-stakk, samt at operativsystemet må være satt opp til å bruke TCP/IP for det aktuelle nettverkskortet. Når disse tingene er på plass må vi i operativsystemet konfigurere nettverkskortet med riktige TCP/IP-innstillinger.
+
+b) DHCPs rolle:
+For å konfigurere nettverkskortet med de riktige TCP/IP innstillinger bruker vi i de aller fleste tilfellene DHCP.
+
+3. TCP/IP-konfigurasjon:
+(Eksempelsvar - individuelt varierende)
+På en Linux-PC kan man bruke kommandoen «ifconfig» for å se nettverkskort og deres konfigurasjon. For å se standardruter brukes «ip route show». DNS-informasjon finnes typisk i filen /etc/resolv.conf. Eksempelvis kan en maskin ha flere nettverksgrensesnitt (eth0 for kablet nett, wlan0 for trådløst, usb0 for USB-nettverk, og lo for loopback), hver med egne IP-adresser, nettmasker og eventuelt IPv6-adresser.
+
+4. DHCP og broadcast-adresse 255.255.255.255:
+Adressen 255.255.255.255 er broadcastadressen i TCP/IP. Alle maskiner i samme nett skal ta imot og behandle pakker til denne adressen. Klienten må bruke denne adressen fordi den ikke vet hvilken adresse en eventuell DHCP-tjener har. Tjeneren må bruke denne adressen fordi klienten ennå ikke har fått sin egen, unike adresse som den kan nås på.
+
+5. Uten ARP-protokoll:
+ARP-protokollen forestår dynamisk kobling mellom IP- og MAC-adresser (dette skjer automatisk). Hvis vi ikke hadde protokollen måtte vi selv manuelt lage koblinger mellom IP-adresser og MAC-adresser. Helt konkret kan vi gjøre dette ved å bruke programmet «arp» med opsjonen «-s» (av «static»).
+
+6. NAT og IP-adresseknapphet:
+Bruk av NAT gjør at flere noder kan dele på en og samme offentlige IP-adresse. På denne måten kan vi ha flere noder på Internett enn vi egentlig har adresser til.
+
+7. Synlighet av mediekonvertere og svitsjer i traceroute:
+Mediekonvertere og svitsjer vil ikke kunne ses i traceroute. Dette er fordi traceroute viser antall hopp mellom lag-3 noder i nettverket. Det er usynlig for IP-protokollen hvilke enheter som ligger på lag 1 og lag 2 (det fysiske laget og lenkelaget). Mediekonvertere ligger på lag 1 og svitsjer ligger på lag 2.
+
+8. Trådløs hjemmeruter som multifunksjonsenhet:
+En slik enhet har mange ulike funksjoner - ruter, bro/svitsj og trådløst aksesspunkt. De enhetene som koples til enheten vil ligge i ulike kollisjons- og kringkastingsdomener avhengig av hvor vi kobler dem til.
+
+9. Forskjell ruter og gateway:
+En ruter videreformidler data på lag 3 (nettverkslaget), mens en gateway videreformidler data på et høyere nivå i lagmodellen. I TCP/IP videreformidler rutere IP-pakker. En gateway kan for eksempel være en kobling mellom epost og SMS eller mellom IP-telefoni og det tradisjonelle telefoninettverket (POTS).
+
+10. Sikkerhetsteknologier:
+Kryptering gjør data uleselige for de som eventuelt kikker på dem underveis. Det er heller ikke mulig å endre på slike data, for de som ikke har nøklene som trengs for å dekryptere. Kryptering sikrer altså konfidensialitet og integritet for data vi overfører.
+
+En brannmur filtrerer ut uønsket kommunikasjon. Ofte dreier det seg om angrepsforsøk utenfra. Til en viss grad kan man også filtrere ut lekkasjer innenfra. Brannmurer beskytter altså mot angrep.
+
+
+DATAKOMMUNIKASJON - LEKSJON 9 LØSNINGSFORSLAG
+LOKALNETTVERK OG WIFI
+
+1. Årsak til klassifisering av datakommunikasjonsbehov:
+Vi har mange ulike behov, og disse behovene fordrer teknologier med ulike egenskaper. I mange tilfeller er ikke disse egenskapene forenlige, og det er dermed naturlig å dele inn behovene i klasser slik at vi kan lage standarder/utstyr med egenskaper som er tråd med de behovene vi har. For eksempel ønsker vi i et PAN å ha små og billige enheter som er enkle å ta i bruk, mens vi i et WAN ønsker høy hastighet over store avstander og gode muligheter for overvåking og administrasjon. Disse egenskapene kan vi ikke kombinere i ett sett med standarder/produkter.
+
+2. Ethernet med hub og TP-kabel:
+Et Ethernet med hub og TP-kabler er det vi kaller et delt medium. Det er bare én kanal å «snakke på», og det betyr at dersom flere noder sender samtidig vil de «snakke i munnen på hverandre». Nodene bruker protokollen CSMA/CD for å unngå kollisjoner. Bruk av CSMA/CD innebærer at nodene lytter på mediet for å høre om det er ledig, samt at kollisjoner detekteres slik at Ethernet-rammene vil bli sendt på ny.
+
+3. Svitsjers forwarding-tabell:
+Svitsjen har en tabell, en «forwarding-tabell», med koblinger mellom MAC-adresser og portnumre. Når vi kobler en node til en port, vil svitsjen lære seg nodens MAC-adresse med en gang noden sender ut en Ethernet-ramme. MAC-adressen kobles til den porten Ethernet-rammen kom inn på. Når svitsjen senere mottar en ramme til denne MAC-adressen slår den opp i tabellen og finner ut hvilken port rammen skal sendes ut på.
+
+4. Kollisjons- vs kringkastingsdomener:
+Et kollisjonsdomene er en del av nettverket hvor kollisjoner kan oppstå dersom to noder sender data samtidig. Dersom det står en svitsj mellom to noder kan disse to nodene aldri sende ut rammer som kolliderer med hverandre, fordi svitsjen forhindrer dette fra å oppstå. Dersom vi ønsker å isolere et kringkastingsdomene fra hverandre (et lag 2-nettverk, typisk samme IP-nett) må vi bruke en ruter. Dersom to noder står på hver sin side av en ruter kan de ikke sende Ethernet-rammer til hverandre, men må sende Ethernet-rammer med IP-pakker til ruteren, slik at den kan videresende IP-pakken i en ny Ethernet-ramme på den andre siden.
+
+5. CSMA/CD i moderne nettverk:
+I moderne nettverk brukes svitsjer og alle noder er direkte knyttet til en svitsjeport. Både nodene og svitsjene settes da til å operere i det vi kaller full dupleks modus, hvilket betyr at CSMA/CD-mekanismen kobles ut. Alle parter i nettverket kan da sende data når de ønsker, selv om de samtidig mottar data.
+
+6. Ethernet-header-felter:
+Avsender: Mottakeren av rammen kan bruke dette når den skal svare. Svitsjer bruker feltet for å bygge opp forwardingtabellene sine.
+Mottaker: Gjør de som mottar rammen i stand til å avgjøre hvorvidt den er ment for seg selv. Svitsjer bruker mottakerfeltet for å avgjøre hvilken port rammen skal sendes ut på.
+Type: Avsenderen gir her mottakeren beskjed om hva innholdet består av, slik at mottakeren kan behandle innholdet på riktig måte.
+Sjekksum: Gjør at mottakeren kan verifisere om den har mottatt en intakt pakke. Svitsjer kan også bruke feltet for å avgjøre dette, og la være å videresende defekte pakker.
+
+7. BSS og ESS:
+BSS: Basic Service Set, ett trådløst aksesspunkt og de assosierte nodene.
+ESS: Extended Service Set, ett eller flere BSS som deler samme ESSID og ellers er konfigurert slik at noder kan flytte seg fritt mellom BSS-ene.
+
+8. 802.11 DCF og PCF:
+I 802.11 DCF brukes den konkurransebaserte protokollen CSMA/CA for å regulere tilgangen til mediet. Dette innebærer at alle nodene lytter på mediet for å høre når det er ledig. De bruker tilfeldig ventetid for å ytterligere redusere muligheten for at kollisjoner skal oppstå. I 802.11 DCF bruker nodene fravær av ACK-melding fra avsenderen som tegn på at noe har gått galt.
+I 802.11 PCF har aksesspunktet rolle som «master» og «poller» i tur alle nodene («slavene») for å høre om de har noe å sende. Dersom så er tilfelle sender noden en ramme, hvis ikke sender den en kort ramme hvor den forteller at den ikke har noe å sende.
+
+9. Bluetooths formål:
+Man ville gjøre det lettere å koble sammen mobilt tele- og datautstyr, uten å trenge en «haug» kabler med riktige kontakter.
+
+10. Trådløs nettverksskanning:
+I spredtbygde strøk kan det være mange ledige kanaler. Da er det best å etablere et nytt nett slik at det ikke overlapper med noen eksisterende nettverk. (Husk kanalbredden i 2.4 GHz-båndet; kanal 1 og 5 overlapper ikke, men kanal 1 og kanal 4 vil forstyrre hverandre.)
+I rekkehus, blokker og kontorbygg er det ofte slik at alle kanaler er i bruk. Men ofte er det slik at noen nettverk er nærmere, og har dermed sterkere signal enn andre. Det beste vi kan gjøre da, er å etablere et nytt nett så det bare overlapper med svake signaler.
+
+DATAKOMMUNIKASJON - LEKSJON 8 LØSNINGSFORSLAG
+DET FYSISKE LAGET OG FYSISKE SIKRINGSTILTAK
+
+1. Det fysiske lagets hovedoppgave:
+Hovedoppgaven til det fysiske laget er å overføre binær informasjon fra en maskin til den neste ved hjelp av elektromagnetiske signaler.
+
+2. Sammensetning av det fysiske laget:
+Det fysiske laget består av transmisjonsmediet og kontakter/antenner som knytter noder til mediet. Det fysiske laget inkluderer også elektronikk for å generere å tolke elektromagnetiske signaler, samt elektronikk for å kode og dekode en bitstrøm før og etter overføring på mediet.
+
+3. Trådparkabler:
+Trådparkabler brukes i spredenett (data) og aksesnett (tele). En trådparkabel består av to eller flere par med kobberfibre. I vanlige trådparkabler til databruk er det fire par med ledere, altså 8 ledere totalt. Det finnes ulike typer trådparkabler, hvorav uskjermet (UTP) og skjermet (STP) er det vanligste. Av disse to er det UTP som er brukt praktisk talt over alt. I tillegg klassifiseres kablene i ulike kategorier, hvor høyere kategori betyr at kabelen har bedre egenskaper. Dette gjør at vi kan overføre data på høyere hastighet. Kategori 3 er vanlig telefonkabel, mens kategori 5, 5e og 6 er vanlig brukt til data. Trådparkabler brukes i strukturert kabling som droppkabel og til faste installasjoner innen en og samme etasje i et bygg.
+
+4. Multimodusfiber vs singelmodusfiber:
+Multimodusfiber er rimelig og man kan bruke rimelig elektronikk. Egenskapene i forhold til båndbredde og lengde på kabelstrekk er imidlertid mye dårligere enn for singelmodusfiber. Med singelmodusfiber kan man ha svært lange kabelstrekk og operere på høye hastigheter. Kostnadene er imidlertid høye sammenlignet med multimodusfiber.
+
+5. Trådløs kommunikasjon:
+Fordeler: Enklere å installere / lavere installasjonskostnader, mobilitet for brukeren
+Ulemper: Begrenset båndbredde, sårbarhet for støy, vanskeligheter hvis man ikke har fri sikt, samt sikkerhetsproblemer som følge av at signalet er lett å avlytte
+
+6. Linjekoder:
+NRZ er svært effektiv, men mangler synkroniseringsinformasjon og er sårbar for støy. Manchester har egenskaper som er akkurat motsatt av NRZ sine, den tåler støy bedre men sløser med båndbredde. Pseudoternary har de samme fordelene som NRZ, men fungerer bedre i lange kabler.
+
+7. Multipleksing:
+I telefonisammenheng har vi mange samtaler som alle krever like mye overføringskapasitet per tidsenhet. Det er da fornuftig å tildele dem akkurat dette. Datatrafikk foregår bolkvis, og det er da hensiktsmessig å tildele tilgjengelige ressurser til de som til enhver tid har noe å sende.
+
+8. Paritetsbits:
+a E x
+lik (even) paritet 11000011 10001011 11110000
+ulik (odd) paritet 11000010 10001010 11110001
+ingen paritet 1100001 1000101 1111000
+alltid en (mark) 11000011 10001011 11110001
+
+9. Moduleringstyper:
+a) Fasemodulering
+b) Kombinert frekvens- og amplitydemodulering
+
+10. Sikkerhetstiltak:
+a) Multiconsult kunne hatt en bedre lås på både ytterdør og innerdører. Dersom vi antar at dette var industrispionasje kunne de muligens ha sørget for at informasjonen var så vanskelig tilgjengelig at innbruddstyven ikke forsøkte seg i utgangspunktet (vi må anta at hun/han var godt informert på forhånd). Bankledelsen burde tenke over at «en pc som kan overføre penger, må beskyttes like godt som pengene selv». Der disse PCene stod, burde det altså ikke vært mulig for utenforstående å ta seg inn, annet enn i følge med bankfolk som passer på hele tiden. En annen mulighet er at programvaren bare virker når de ansatte presenterer et adgangskort som de har rundt halsen. Dermed kan ikke PCen styres når ingen sitter på stolen. Og de vil forhåpentligvis reagere hvis den styres mens de er til stede.
+
+b) En vakt på stedet ville vært på plass raskere enn vekterne som brukte 5 minutter. Dersom de stjålne PC-ene ikke hadde inneholdt noe informasjon i det hele tatt (alt lagret på server) ville ikke tyveriet hatt så store konsekvenser for Multiconsult. Mange banker har et system hvor én ansatt bare kan overføre «mindre beløp». Større beløp krever samarbeid, og da er det ikke nok for skurkene å styre én pc.
+
+
+DATAKOMMUNIKASJON - LEKSJON 7 LØSNINGSFORSLAG
+LENKELAGET OG SVITSJER
+
+1. Token-ring problem:
+Hvis ringen brytes, stopper all kommunikasjon i hele ringen. Det kan f.eks. skje hvis en kabel ryker. Et slikt brudd kan ta tid å finne og reparere - i mellomtiden er nettet dødt. Hvis en ethernet-kabel ryker, er det bare PCen i enden av kabelen som mister forbindelse med nettet. Alle andre har fremdeles forbindelse med hverandre.
+
+2. Lenkelagets hovedoppgave:
+Hovedoppgaven til lenkelaget er å overføre pakker mellom nettverkslagene på tilstøtende noder. Dette innebærer å klargjøre pakker, gjennom innramming og andre mekanismer, slik at innholdet kan overføres på det fysiske laget.
+
+3. Typefelt i rammeheaderen:
+For at operativsystemet på mottakermaskinen skal ha mulighet til å behandle nyttelasten i henhold til hva den består av. For eksempel kan avsenderen gjennom å sette riktig verdi i typefeltet angi at nyttelasten er en IP-pakke. Mottakermaskinen kan da behandle nyttelasten med sin IP-funksjonalitet.
+
+4. Skille mellom lenkelag og fysisk lag:
+Funksjonaliteten på lenkelaget er implementert som programvare som typisk delvis befinner seg i operativsystemet som bl.a. drivere, og delvis som programvare i maskinvare som et Ethernet nettverkskort. Det varierer også hvor mye av denne funksjonaliteten som ligger i operativsystemet og hvor mye som ligger ute i maskinvaren.
+
+5. Kollisjonsdomener i eksempelnettverk:
+Hver hub er et kollisjonsdomene, til sammen tre. Hvert aksesspunkt er et trådløst kollisjonsdomene, til sammen to. Hver forbindelse mellom aksesspunkt og svitsj er også et kollisjonsdomene, også to. Til sammen er det sju kollisjonsdomener her.
+
+6. Kollisjons- vs kringkastingsdomener:
+Det er vanligvis mange fler kollisjonsdomener enn kringkastingsdomener. Kringkastingsdomener er store, og adskilles med rutere. Alt som kan nåes uten å gå via en ruter, er i samme kringkastingsdomene. Det kan være mange datamaskiner, svitsjer og huber i ett kringkastingsdomene. Kollisjonsdomener er derimot adskilt med broer. En svitsj utgjør en bro mellom alle svitsjeportene, så hver port er et eget kollisjonsdomene.
+
+7. Aksessmekanisme på delt medium:
+Når vi opererer på et delt medium kan bare en node sende data av gangen. Dette betyr at vi må ha en mekanisme som sørger for å forhindre at flere sender samtidig. Hvis flere sender samtidig, blir signalet ødelagt, ingen informasjon kommer frem.
+
+8. IEEE802.1X vs MAC-basert portlåsing:
+Mac-adresser kan forfalskes. En angriper kan lytte på nettet, for å finne en passende adresse og ta den i bruk. Slik kan angriperen komme seg forbi mac-basert portlåsing. IEEE802.X sikrer forbindelsen med brukernavn og passord, som ikke er så lett å gjette.
+
+DATAKOMMUNIKASJON - LEKSJON 6 LØSNINGSFORSLAG
+RUTING PÅ NETTVERKSLAGET
+
+1. Ruterens oppgaver:
+a) En ruters oppgave er todelt. Den skal videresende pakker avhengig av rutingtabellen. Og den skal finne de gunstigste rutene og legge disse inn i rutingtabellen.
+b) Å sette opp rutingtabellene er en komplisert prosess da vi må ta hensyn til hvordan hele nettverket er bygd opp. Dessuten kan det skje endringer underveis. Vi bruker derfor rutingalgoritmer for at tabellene hele tiden skal være oppdatert.
+c) Først sjekkes om pakken er adressert til ruteren selv. Deretter sjekkes det om pakkehodet er OK. Så sjekkes TTL feltet og telles ned med en. Så sjekkes IP-adressen til mottaker opp imot rutingtabellene. Og til slutt sjekkes størrelsen på pakken opp imot størrelsen på lenkelagsrammen på det nettet som pakkes skal sendes ut.
+
+2. OSPF vs BGP:
+OSPF brukes innenfor et AS. Ruterne utveksler informasjon om hvilke nett/linker de har tilgang på, og kostnader ved forbindelsene.
+BGP brukes for å organisere rutingen mellom ulike AS. Ruterne utveksler informasjon om hvilke nett de har tilgang på, og dessuten hvilke AS det i så fall rutes gjennom.
+
+3. IP-adresser:
+a) RIPE NCC er ansvarlig for hele Europa. Ulike bedrifter som har egne autonome soner reserverer IP-adresserom direkte hos dem og selger dette videre til andre bedrifter i Norge.
+b) På denne måten kan vi bruke ruteaggregering. Det vil si at vi kan adressere et helt adresserom med en enkelt adresse. I starten når IP-adresserom ble delt ut, delte man ut altfor store bolker.
+
+4. Autonome systemer:
+a) For det første ville vi fått et skaleringsproblem dersom alle kjører samme protokoller. For det andre ville rutetabellene blitt enorme, siden Internett består av millioner av nettverk.
+b) Hele nettverket deles opp i ulike autonome soner som administreres hver for seg som en egen enhet. I tillegg kobles de ulike AS sammen via såkalte gateway rutere som bruker sine egne protokoller.
+c) Eksempel for vg.no: Ved å bruke nslookup finner vi IP-adressen, og deretter whois for å finne AS-nummeret.
+
+5. Rutesporing:
+Ruta blir forskjellig ettersom hvor din PC er i Internettet. Eksempelrute viser hopp gjennom ulike nettverksutstyr før den når målet.
+
+DATAKOMMUNIKASJON - LEKSJON 5 LØSNINGSFORSLAG
+NETTVERKSLAGET/IP OG BRANNMURER
+
+1. Implementering av nettverkslagsprotokoller:
+Nettverkslagsprotokoller må være implementert i alt mellomliggende utstyr mellom avsender og mottaker som pakkene passerer. (Typisk rutere)
+
+2. Implementering av transportlagets protokoller:
+Transportlagets protokoller implementeres bare på endeutstyret, f.eks. klient og tjener.
+
+3. IP-pakkers nyttelast:
+a) Nei, en IP-pakke kan inneholde hvilken som helt nyttelast.
+b) Dette er en av hovedårsakene til utbredelsen av IP, da protokollen kan brukes til svært mange tjenester på lagene over.
+
+4. Forbindelsesløs protokoll:
+a) Det foretas ingen oppkobling før pakkene sendes ut på nettet. Vi har altså ingen garanti for at pakkene kommer frem eller at de er feilfrie.
+b) Nødvendig funksjonalitet for en pålitelig tjeneste må legges til høyere lags protokoller. For eksempel TCP.
+
+5. Headerfelter:
+a) Header length angir hvor lang headeren er. Total length gir oss lengden av hele pakka.
+b) ToS-feltet kan benyttes av en ruter til å rute pakker ulikt avhengig av om senderen ønsker prioritering.
+c) Liten tidsforsinkelse bør prioriteres for interaktive, sanntids applikasjonstjenester.
+
+6. CIDR:
+a) A, B, og C-klassene representerer en svært grovkornet inndeling. CIDR frigjør seg fra denne inndelingen.
+b) Maskinen må i tillegg være konfigurert med en nettmaske.
+c) Det er to ulike adresseringssystemer.
+
+7. Adresserommet 158.40.72.0/22:
+a) Nettmasken blir 255.255.252.0, eller 11111111 11111111 11111100 00000000 binært.
+b) 1022 adresser. Høyeste adresse blir 158.40.75.254, laveste adresse blir 158.40.72.1.
+c) Fire like nett: 158.40.72.0/24, 158.40.73.0/24, 158.40.74.0/24, 158.40.75.0/24.
+
+8. IP-oppsett:
+Eksempel på maskin med tre IP-adresser (kablet, trådløst og internt) med tilhørende nettmasker og kapasitet.
+
+9. IPv6-forbedringer:
+• «Flow label»-feltet for sanntidstrafikk
+• Sjekksummen er fjernet
+• Fragmentering gjøres av endestasjoner
+
+10. Brannmur-scenarier:
+a) Pakkefilter: Stoppe pakker til/fra ip-adressen. Innholdsfilter: Filtrere web-trafikk.
+b) Innholdsfilter for epost som fjerner vedlagte programmer eller bruker virusscanner.
+c) Pakkefilter som stopper RDP (port 3389) og SSH (port 22) fra utsiden, men tillater fra interne adresser.
+
+🔹 Leksjon 4 – UDP, TCP og sikkerhet
+1. UDP
+a) Hva betyr det at UDP-protokollen er upålitelig?
+UDP sender sine pakker til lagene under uten å ta kontakt med en mottakerapplikasjon på forhånd. Protokollen inneholder heller ingen felter for å holde styr på hvilke data som er overført og vi får ingen informasjon tilbake om data er korrekt kommet frem.
+
+b) Til tross for at UDP har upålitelig overføring av data er det enkelte tjenester som benytter denne protokollen. Hvilke type tjenester snakker vi om og hvorfor er UDP hensiktsmessig?
+Sanntids multimedia krever kontinuerlig lyd/bilde, og da er det viktigere å holde fremdriften enn å stoppe og vente på tapte pakker. Kan også brukes av andre applikasjoner som selv tar ansvar for å «rydde opp» dersom overføringen sviktet. For eksempel sender DNS en ny forespørsel dersom første spørring ikke ga svar.
+
+2. Transportlaget og TCP
+a) Hvilke to hovedprotokoller finner vi på transportlaget? Hva er hovedforskjellen mellom disse?
+TCP (Transport Control Protocol) og UDP (User Datagram Protocol). TCP er forbindelsesorientert og tilbyr pålitelig overføring. Pakkeheader er på 20 byte. UDP er forbindelsesløs og tilbyr upålitelig overføring. Pakkeheader er på 8 byte.
+
+b) Hvilke flagg i TCP pakkeheader brukes for å kople opp en forbindelse? Hvor mange pakker utveksles?
+Det er SYN-flagget som settes for å vise at det er en oppkopling, og ACK-flagget som settes for å kvittere tilbake at pakken er mottatt. Utvekslingen krever 3 pakker og kalles 3-way handshake.
+
+c) Hva er de tre fasene man går gjennom når man overfører data med TCP?
+
+Oppkopling
+
+Dataoverføring
+
+Nedkopling
+
+d) Dersom den første TCP-pakken sender 450 byte med nyttelast, hva er da sekvensnummeret i denne pakken? Hvilket kvitteringsnummer vil vi få tilbake i første returpakke?
+Sekvensnummeret er 1. Kvitteringsnummeret er 451.
+
+e) Hva er formålet med flytkontroll? Hvilken verdi i TCP pakkeheader styrer dette?
+Formålet er å hindre at mottaker drukner i data. Det styres med feltet «vindu».
+
+f) TCP bruker kumulative kvitteringer, hva innebærer det?
+Det innebærer at en pakke kan kvittere for flere pakker mottatte data. Det er siste (høyeste) kvitteringsverdi som teller.
+
+g) Hva er formålet med metningskontroll? Hva er det TCP baserer metningskontroll på?
+Formålet er å hindre opphopning av trafikk (metning) i nettet. TCP styrer dette ved å bruke tidsutløp og uteblitte kvitteringer.
+
+3. QUIC
+Gjør kort rede for fordeler med QUIC
+
+Forbindelsen kommer raskere i gang
+
+Kryptering settes opp samtidig som forbindelsen
+
+Pakketap forsinker ikke andre deler av overføringen
+
+4. En sveitsisk bank planlegger sikre transaksjoner via Internett.
+a) Transaksjoner skal være hemmelige.
+b) Kunden skal ikke kunne nekte for å ha godkjent en overføring.
+Forslag:
+
+Konfidensialitet: Kryptering (symmetrisk/asymmetrisk)
+
+Autentisering: Digitale signaturer eller sjekksum
+
+Eksempel: Kryptering med bankens offentlige nøkkel for hemmelighold, og kundens private nøkkel for autentisering
+
+🔹 Leksjon 3 – Transportlaget
+1. Transportlaget
+a) Hva er hovedoppgaven til transportlaget?
+Å overføre data mellom applikasjoner som om de kommuniserte direkte.
+
+b) Hva er forskjellen på kortlivde og velkjente portnummer?
+Velkjente porter: 0–1023. Kortlivde porter: velges dynamisk over 1023 til midlertidig bruk.
+
+c) Hvilken metode bruker TCP og UDP for å kontrollere at datapakken ikke har bitfeil?
+Sjekksum – summering som 16-bits heltall.
+
+d) Hva kalles programmeringsgrensesnittet som applikasjonen bruker for å sende og motta data over nettet?
+Socket
+
+e) Når har man behov for glidende vindu-mekanismen, og hva er formålet med denne metoden?
+Brukes ved pålitelig overføring. Formål: sende flere pakker før man venter på kvittering – effektiviserer overføringen.
+
+2. Feilretting
+a) Hvilke styrker og svakheter har vi ved bruk av paritetsbit som feilfinningsmetode?
+Styrke: Finner odde antall bitfeil
+Svakhet: Oppdager ikke partall feil
+
+b) Hvorfor bruker man ikke feilrettingsprotokoller i større grad?
+Fordi de bruker mye ekstra båndbredde. Det er mer effektivt å sende på nytt hvis feil skjer sjeldent.
+
+3. Forbindelser
+a) Hva menes med en forbindelsesløs og upålitelig protokoll?
+Ingen kontakt mellom sender og mottaker før overføring. Ingen garanti for levering.
+
+b) Hva menes med en forbindelsesorientert og pålitelig protokoll?
+Oppretter en forbindelse først. Holder oversikt over sendt og mottatt data.
+
+4. Tjenester
+a) Hvilke portnumre brukes av tjenesten snmp?
+Port 161
+
+b) Hvilke tjenester bruker portene med numre 23, 49 og 1194?
+23 = telnet, 49 = tacacs, 1194 = openvpn
+
+5. Praktisk Wireshark-oppgave
+Fang TCP-overføring med Wireshark (f.eks. fra http://elg.no). Se etter:
+
+SYN, SYN+ACK, ACK (3-way handshake)
+
+PUSH- og FIN-flagg
+
+Portnumre (80 og dynamisk valgt port)
+
+Window size varierer underveis
+
+🔹 Leksjon 2 – DNS og e-post
+1. Hva er ip-adressene på maskinene som kjører webtjenester for www.toyota.no? Hva heter de?
+
+www.toyota.no peker til cname → akamai.net
+
+IP: 95.101.10.59 og 95.101.10.66
+
+Navn: deploy.akamaitechnologies.com
+
+2. Hva er sammenhengen mellom SMTP og MIME?
+SMTP sender e-post. MIME beskriver hvordan innholdet skal se ut (spesielt for ikke-ASCII-innhold).
+
+3. Hvem skjuler seg bak ip-adressen 129.242.126.10?
+UIT – Norges arktiske universitet
+
+4. Hva er tittelen på RFC 822 og når ble den skrevet?
+STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES, 13. august 1982
+
+5. Hvem er sponsor for toppnivådomenet «.museum»?
+The Museum Domain Management Association International (MDI)
+
+6. Finn IPv6-adressen til «ntnu.no»
+2001:700:300:6::102
+
+7. Hva er ASCII forkortelse for? Hvilket ASCII-tegn er representert ved verdien 81 (desimalt)?
+American Standard Code for Information Interchange. 81 = «Q»
+
+8. Hva oppnår vi med at et domenenavn kan ha flere IP-adresser?
+Lastbalansering
+
+9. Hvilke maskiner håndterer epost for «bank.no»?
+
+de-smtp-inbound-1.mimecast.com
+
+de-smtp-inbound-2.mimecast.com
+IP: 194.104.110.22 og 194.104.108.22
+
+10. Kan det være noen vits i å ha mange domenenavn på én IP-adresse?
+Ja, det kalles webhotell – mange domener på én server.
+
+11. Wireshark-oppgave om e-post
+Avhenger av e-postsystem.
+
+Webmail → https (kryptert)
+
+SMTP/POP/IMAP → kan være leselig
+
+Kryptering = god sikkerhet
+
+12. Hvorfor bør vi kjøre utgående epost gjennom spamfilter?
+For å hindre at infiserte PC-er sender spam på vegne av firmaet.
+
+13. Slå opp SPF-records for adressa.no – hvilke IP-er har lov å sende epost?
+Gjennom flere include-rekker:
+
+spf.mtasv.net
+
+spf.polarisit.no
+
+spf.protection.outlook.com
+
+spfd.protection.outlook.com
+…og en rekke IPv4- og IPv6-adresser
+
+
+📘 Leksjon 1 – Grunnprinsipper og web
+1. Hvilken internasjonal organisasjon utvikler standarder for Internett?
+IETF utvikler standarder for Internett. I tillegg er ISO, ITU, IEEE og W3C viktige aktører.
+
+2. På hvilket lag i OSI-modellen finner vi IP-protokollen?
+Nettverkslaget
+
+3. Når kom ARPANET og Internettet i gang?
+ARPANET-prosjektet startet i 1966. Første ip-pakke ble overført i 1969, så var nettet i gang!
+
+4. Hva er en de-facto standard?
+En standard som ikke var offisielt planlagt, men ble slik fordi en fremgangsmåte/protokoll ble allment akseptert og utbredt.
+
+5. Hva driver organisasjonen W3C med?
+De standardiserer webteknologier
+
+6. Fortell om forskjeller mellom pakke- og linjesvitsjing.
+Med linjesvitsjing åpnes en kommunikasjonskanal gjennom nettet, og alle pakkene i samme datastrøm følger den samme veien i rekkefølge.
+Med pakkesvitsjing sendes pakker gjennom nettet enkeltvis, hver pakke kan ta sin egen vei. Dette utnytter båndbredden bedre. Men pakker kan komme frem i en annen rekkefølge enn de ble sendt i.
+
+7. Hva er forskjellen mellom «Internett» og «World wide web»?
+Internettet er et globalt datanettverk. Det foregår mange typer datakommunikasjon over Internettet. «World wide web» er bare én slik form for kommunikasjon på Internettet.
+
+8. Hva er formålet med HTTP headerlinjen «If-modified-Since»?
+Ved lokal mellomlagring brukes dette for å sjekke om websiden er endret siden et bestemt tidspunkt. Dersom den ikke er endret, hentes websiden fra lokalt mellomlager.
+
+9. Informasjonskapsler
+a) Tjeneren bruker informasjonen i slike kapsler for å tilpasse responsen på en forespørsel om visning av en webside.
+b) Det er tjeneren bestemmer innholdet i slike informasjonskapsler.
+c) Tjeneren ber klienten opprette slike informasjonskapsler.
+
+10. Forklar forskjellen på vedvarende forbindelser med og uten pipelining.
+Ved vedvarende forbindelser kan vi overføre flere objekter over samme oppkobling. Med pipelining kan vi spørre etter flere objekter samtidig.
+
+11. Er Internett egnet for sanntidsdata?
+Nei, Internett har ingen garanti for tjenestekvalitet og kan ved høy belastning gi treg respons.
+
+12. Hva er plug-ins?
+Tilleggsprogramvare for nettleseren. Eksempel: Flashplayer, Java, PDF-visere.
 
