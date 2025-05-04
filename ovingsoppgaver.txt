@@ -98,11 +98,34 @@ Ta utgangspunkt i nettverket 10.0.64.0/18. Hva blir laveste og høyeste ip-adres
 Jeg vil heller dele dette nettet opp i to mindre nettverk. Hva blir høyeste ip-adresse, laveste ipadresse og broadcastadresse i hvert av disse nettverkene?
 
 a)
+
+📌 Oppsummering: Hvorfor blir det to ganger 32 blokker når vi deler et /18-nettverk?
+Et nettverk med /18 (f.eks. 10.0.64.0/18) har:
+
+Totalt 2^(32−18) = 16 384 IP-adresser
+
+Det tilsvarer 64 /24-blokker, fordi 16 384 / 256 = 64
+
+Når vi deler /18-nettet i to, får vi to /19-nettverk:
+
+Hvert /19 har 8192 adresser, som tilsvarer 32 /24-blokker
+
+Derfor blir det:
+
+Første /19: 32 blokker → 10.0.64.0 – 10.0.95.255
+
+Andre /19: 32 blokker → 10.0.96.0 – 10.0.127.255
+
+👉 Totalt: 32 + 32 = 64 blokker, som stemmer med hele /18-nettet.
+Vi tok altså "to ganger 32 blokker" fordi vi delte /18-nettet i to like store /19-nett.
+
+
 Laveste: 10.0.64.1
 Høyeste: 10.0.127.254
 Broadcast: 10.0.127.255
 
-b)
+b) delt i to: 
+
 Nett1: 10.0.64.0/19
 Laveste: 10.0.64.1
 Høyeste: 10.0.95.254
